@@ -1,0 +1,646 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Unfallhilfe Nord 24 – Unfallabwicklung Elmshorn, Pinneberg, Hamburg</title>
+<meta name="description" content="Unverschuldeter Unfall? Wir übernehmen Gutachten, Werkstatt, Autoglas, Mietwagen und den Schriftverkehr mit der gegnerischen Versicherung. Elmshorn, Pinneberg, Hamburg. Rund um die Uhr erreichbar.">
+
+<!-- ==========================================================
+     UNFALLHILFE NORD 24 – Landingpage
+     Eine Datei, kein Framework, keine externen Schriften.
+     Läuft per Doppelklick im Browser.
+
+     WAS DU HIER SELBST ÄNDERST:
+       1) FARBEN ............ im Block :root direkt unter diesem Kommentar
+       2) KONTAKTDATEN ...... Suche nach "KONTAKTDATEN" (kommt mehrfach vor)
+       3) TEXTE ............. jeder Abschnitt beginnt mit dem Wort ABSCHNITT
+       4) BILDER ............ Suche nach "PLATZHALTER" – dort echte <img> einsetzen
+       5) IMPRESSUM ......... Suche nach "IMPRESSUM" – fehlende Angaben ergänzen
+     ========================================================== -->
+
+<style>
+/* ---------- 1) FARBEN – Farbwelt "Nordlicht" ----------
+   Bernstein ist ausschliesslich die Farbe des Handlungs-Buttons.
+   Wenn ein zweites Element diese Farbe bekommt, verliert der Button
+   seine Signalwirkung. Bitte nicht aufweichen. */
+:root{
+  --ground:#F4F1EC;        /* Grundfläche, warmweiss */
+  --surface:#FFFDFA;       /* Karten */
+  --ink:#0F2B38;           /* Tiefpetrol, Fliesstext und Überschriften */
+  --ink-2:#4A6069;         /* Sekundärtext */
+  --rule:#DCD5C9;          /* Linien */
+  --rule-2:#C3BBAC;
+  --dark:#0F2B38;          /* dunkle Blöcke */
+  --dark-ink:#EFEADF;
+  --dark-ink-2:#9FB6BF;
+  --accent:#F2A03D;        /* NUR Haupt-Button */
+  --accent-ink:#221202;    /* Schrift auf Bernstein */
+  --accent-dark:#8A4E08;   /* Bernstein als Textfarbe auf hellem Grund */
+  --ok:#1F5A3D;
+  --radius:3px;
+  --maxw:1080px;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{color-scheme:light;scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{
+  margin:0;
+  background:var(--ground);
+  color:var(--ink);
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  font-size:17px;
+  line-height:1.62;
+  -webkit-text-size-adjust:100%;
+}
+img{max-width:100%;height:auto;display:block}
+a{color:var(--ink);text-underline-offset:3px}
+:focus-visible{outline:3px solid var(--accent-dark);outline-offset:3px;border-radius:2px}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 20px}
+.skip{position:absolute;left:-9999px}
+.skip:focus{left:12px;top:12px;z-index:100;background:var(--dark);color:#fff;padding:12px 18px;border-radius:var(--radius)}
+
+h1,h2,h3{line-height:1.15;letter-spacing:-.02em;margin:0 0 .5em;text-wrap:balance}
+h1{font-size:clamp(1.85rem,6.4vw,3.1rem);font-weight:800}
+h2{font-size:clamp(1.45rem,4.4vw,2.15rem);font-weight:750}
+h3{font-size:1.1rem;font-weight:700;letter-spacing:-.01em}
+p{margin:0 0 1em;max-width:64ch}
+.lede{font-size:1.1rem;color:var(--ink-2)}
+.eyebrow{
+  font-size:.78rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--ink-2);margin:0 0 14px;
+}
+section{padding:52px 0;border-top:1px solid var(--rule)}
+section:first-of-type{border-top:none}
+
+/* ---------- Haupt-Button (Bernstein) ---------- */
+.cta{
+  display:inline-flex;flex-direction:column;align-items:flex-start;gap:1px;
+  background:var(--accent);color:var(--accent-ink);
+  font-size:1.05rem;font-weight:800;line-height:1.25;
+  padding:17px 26px;border-radius:var(--radius);
+  text-decoration:none;min-height:56px;
+  border:2px solid transparent;
+}
+.cta:hover{background:#E9942C}
+.cta small{display:block;font-weight:600;font-size:.82rem;opacity:.85}
+@media(max-width:560px){
+  .cta,.cta-2{width:100%;justify-content:center;align-items:center;text-align:center}
+}
+/* Zweitrangige Aktion – bewusst farblos */
+.cta-2{
+  display:inline-flex;align-items:center;gap:10px;
+  border:2px solid var(--rule-2);color:var(--ink);
+  font-size:1rem;font-weight:700;padding:15px 22px;border-radius:var(--radius);
+  text-decoration:none;min-height:56px;background:transparent;
+}
+.cta-2:hover{border-color:var(--ink);background:var(--surface)}
+.cta-row{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin:26px 0 0}
+
+/* ---------- Kopfzeile ---------- */
+header.top{
+  position:sticky;top:0;z-index:40;background:var(--ground);
+  border-bottom:1px solid var(--rule);
+}
+.top-in{display:flex;align-items:center;gap:14px;justify-content:space-between;padding:10px 20px;max-width:var(--maxw);margin:0 auto}
+.brand{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:-.02em;text-decoration:none;font-size:1rem}
+.logo-ph{
+  width:40px;height:40px;flex:0 0 auto;border:1.5px dashed var(--rule-2);
+  border-radius:var(--radius);display:grid;place-items:center;
+  font-size:.55rem;font-weight:700;color:var(--ink-2);text-align:center;line-height:1.1;
+}
+.top-tel{font-weight:700;text-decoration:none;white-space:nowrap;font-size:.95rem}
+.top-tel span{display:block;font-size:.72rem;font-weight:600;color:var(--ink-2);letter-spacing:.04em}
+@media(max-width:600px){.top-tel{display:none}}
+
+/* ---------- Hero ---------- */
+.hero{background:var(--dark);color:var(--dark-ink);padding:44px 0 48px}
+.hero h1{color:#fff}
+.hero .eyebrow{color:var(--accent)}
+.hero p{color:var(--dark-ink-2);font-size:1.12rem;max-width:58ch}
+.hero .cta-2{color:#fff;border-color:rgba(159,182,191,.55)}
+.hero .cta-2:hover{border-color:#fff;background:rgba(255,255,255,.07)}
+.proof{
+  list-style:none;display:flex;flex-wrap:wrap;gap:10px 26px;
+  margin:30px 0 0;padding:26px 0 0;border-top:1px solid rgba(159,182,191,.3);
+}
+.proof li{font-size:.93rem;color:#fff;font-weight:600;display:flex;gap:8px;align-items:baseline}
+.proof li::before{content:"›";color:var(--accent);font-weight:800}
+
+/* ---------- Bausteine ---------- */
+.grid{display:grid;gap:16px}
+@media(min-width:700px){
+  .g2{grid-template-columns:repeat(2,1fr)}
+  .g3{grid-template-columns:repeat(3,1fr)}
+}
+.card{background:var(--surface);border:1px solid var(--rule);border-radius:var(--radius);padding:22px}
+.card h3{margin-bottom:.35em}
+.card p{margin:0;color:var(--ink-2);font-size:.97rem}
+.card p+p{margin-top:.7em}
+.pain{border-left:3px solid var(--accent)}
+.pain .impact{color:var(--ink);font-weight:600}
+
+ul.plain{list-style:none;margin:0 0 1em;padding:0;max-width:64ch}
+ul.plain li{position:relative;padding-left:26px;margin-bottom:10px}
+ul.plain li::before{
+  content:"";position:absolute;left:0;top:.62em;width:12px;height:2px;background:var(--accent);
+}
+.steps{counter-reset:s;list-style:none;margin:0;padding:0;display:grid;gap:16px}
+@media(min-width:700px){.steps{grid-template-columns:repeat(3,1fr)}}
+.steps li{counter-increment:s;background:var(--surface);border:1px solid var(--rule);border-radius:var(--radius);padding:22px}
+.steps li::before{
+  content:counter(s);display:grid;place-items:center;width:34px;height:34px;
+  background:var(--dark);color:#fff;border-radius:50%;font-weight:800;font-size:.95rem;margin-bottom:12px;
+}
+.steps b{display:block;font-size:1.05rem;margin-bottom:.3em}
+.steps span{color:var(--ink-2);font-size:.97rem}
+
+/* Bild-Platzhalter */
+.ph{
+  border:2px dashed var(--rule-2);border-radius:var(--radius);background:#EDE8E0;
+  display:grid;place-items:center;text-align:center;padding:28px 18px;min-height:190px;color:var(--ink-2);
+}
+.ph b{display:block;font-size:.95rem;color:var(--ink);margin-bottom:4px}
+.ph span{font-size:.85rem;max-width:34ch;display:block}
+.ph::before{content:"Bild fehlt";display:block;font-size:.7rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-dark);margin-bottom:10px}
+
+/* Zitat / Bewertung */
+.quote{background:var(--dark);color:var(--dark-ink);border-left:4px solid var(--accent);padding:26px;border-radius:var(--radius)}
+.quote p{font-size:1.12rem;color:#fff;max-width:52ch}
+.quote footer{font-size:.85rem;color:var(--dark-ink-2);font-weight:600;letter-spacing:.04em}
+.stars{color:var(--accent);letter-spacing:.14em;font-size:1rem}
+
+.badges{display:flex;flex-wrap:wrap;gap:12px;margin-top:18px;padding:0;list-style:none}
+.badges li{
+  border:1px solid var(--rule);background:var(--surface);border-radius:var(--radius);
+  padding:12px 16px;font-size:.92rem;font-weight:600;
+}
+.badges li em{display:block;font-style:normal;font-weight:600;color:var(--ink-2);font-size:.82rem}
+
+.note{
+  background:#FBEFD9;border-left:3px solid var(--accent);color:#5C3703;
+  padding:16px 18px;border-radius:var(--radius);font-size:.95rem;max-width:66ch;
+}
+.note b{color:#3E2402}
+
+/* Ratgeber */
+.art{display:block;background:var(--surface);border:1px solid var(--rule);border-radius:var(--radius);padding:20px;text-decoration:none;height:100%}
+.art:hover{border-color:var(--ink)}
+.art .cat{font-size:.72rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--accent-dark)}
+.art b{display:block;font-size:1.03rem;margin:8px 0;line-height:1.3}
+.art span{color:var(--ink-2);font-size:.93rem}
+
+/* Formular */
+form{max-width:520px}
+.field{margin-bottom:16px}
+label{display:block;font-weight:700;font-size:.93rem;margin-bottom:6px}
+label .hint{display:block;font-weight:500;color:var(--ink-2);font-size:.85rem;margin-top:2px}
+input,textarea{
+  width:100%;font:inherit;font-size:1rem;padding:13px 14px;
+  border:1.5px solid var(--rule-2);border-radius:var(--radius);
+  background:var(--surface);color:var(--ink);min-height:52px;
+}
+textarea{min-height:110px;resize:vertical}
+input:focus,textarea:focus{border-color:var(--ink)}
+.check{display:flex;gap:10px;align-items:flex-start;font-weight:500;font-size:.9rem;color:var(--ink-2)}
+.check input{width:22px;height:22px;min-height:22px;flex:0 0 auto;margin-top:2px}
+button[type=submit]{
+  font:inherit;font-size:1rem;font-weight:700;cursor:pointer;
+  background:transparent;border:2px solid var(--rule-2);color:var(--ink);
+  padding:15px 24px;border-radius:var(--radius);min-height:56px;
+}
+button[type=submit]:hover{border-color:var(--ink);background:var(--surface)}
+
+/* Fusszeile */
+footer.site{background:var(--dark);color:var(--dark-ink);padding:44px 0 34px;margin-top:0}
+footer.site a{color:#fff}
+footer.site h3{color:#fff;font-size:.95rem;letter-spacing:.1em;text-transform:uppercase}
+footer.site p,footer.site li{color:var(--dark-ink-2);font-size:.95rem}
+.fgrid{display:grid;gap:28px}
+@media(min-width:700px){.fgrid{grid-template-columns:repeat(3,1fr)}}
+footer.site ul{list-style:none;margin:0;padding:0}
+footer.site li{margin-bottom:6px}
+details.legal{border-top:1px solid rgba(159,182,191,.3);margin-top:30px;padding-top:18px}
+details.legal summary{cursor:pointer;font-weight:700;color:#fff;padding:8px 0;min-height:44px;display:flex;align-items:center}
+details.legal div{font-size:.9rem;color:var(--dark-ink-2);max-width:70ch}
+details.legal .todo{color:var(--accent);font-weight:700}
+
+/* Daumenleiste mobil */
+.thumb{
+  position:fixed;left:0;right:0;bottom:0;z-index:50;display:flex;gap:1px;
+  background:var(--rule-2);border-top:1px solid var(--rule-2);
+}
+.thumb a{
+  flex:1;display:flex;align-items:center;justify-content:center;gap:8px;
+  min-height:60px;text-decoration:none;font-weight:800;font-size:1rem;
+}
+.thumb .w{background:var(--accent);color:var(--accent-ink)}
+.thumb .t{background:var(--surface);color:var(--ink)}
+@media(min-width:860px){.thumb{display:none}}
+@media(max-width:859px){body{padding-bottom:62px}}
+</style>
+</head>
+<body>
+
+<a class="skip" href="#inhalt">Zum Inhalt springen</a>
+
+<!-- ABSCHNITT 1 – Kopfzeile ------------------------------------------------
+     KONTAKTDATEN: Telefonnummer hier ändern (zwei Stellen: href und Text) -->
+<header class="top">
+  <div class="top-in">
+    <a class="brand" href="#top">
+      <!-- PLATZHALTER LOGO: hier <img src="logo.svg" alt="Unfallhilfe Nord 24"> einsetzen -->
+      <span class="logo-ph" aria-hidden="true">LOGO<br>fehlt</span>
+      Unfallhilfe Nord&nbsp;24
+    </a>
+    <a class="top-tel" href="tel:+4917620289430">0176 20 28 94 30<span>Rund um die Uhr</span></a>
+  </div>
+</header>
+
+<main id="inhalt">
+
+<!-- ABSCHNITT 2 – Above the fold ------------------------------------------
+     Beantwortet in drei Sekunden: was ist das, für wen, was soll ich tun. -->
+<div class="hero" id="top">
+  <div class="wrap">
+    <p class="eyebrow">Unfallhilfe Nord 24 · Elmshorn</p>
+    <h1>Sie hatten den Unfall nicht verschuldet. Warum haben Sie dann die Arbeit?</h1>
+    <p>Wir übernehmen nach einem unverschuldeten Verkehrsunfall alles, was jetzt kommt: unabhängiges Gutachten, Werkstatt, Autoglas, Mietwagen, Abschleppen und den gesamten Schriftverkehr mit der gegnerischen Versicherung. Ein Ansprechpartner statt sechs Telefonaten.</p>
+
+    <div class="cta-row">
+      <!-- KONTAKTDATEN: WhatsApp-Link mit vorbelegtem Text -->
+      <a class="cta" href="https://api.whatsapp.com/send?phone=4917620289430&amp;text=Guten%20Tag%2C%20ich%20hatte%20einen%20Unfall%20und%20brauche%20Hilfe.%20K%C3%B6nnen%20Sie%20mir%20weiterhelfen%3F">
+        Jetzt Unfall melden
+        <small>per WhatsApp · kostenlose Ersteinschätzung</small>
+      </a>
+      <a class="cta-2" href="tel:+4917620289430">Oder anrufen: 0176 20 28 94 30</a>
+    </div>
+
+    <ul class="proof">
+      <li>Rund um die Uhr erreichbar</li>
+      <li>Seit 19 Jahren eigene Werkstatt in Elmshorn</li>
+      <li>Erstberatung kostenlos und unverbindlich</li>
+      <li>Unabhängig von der gegnerischen Versicherung</li>
+    </ul>
+  </div>
+</div>
+
+<div class="wrap">
+
+<!-- ABSCHNITT 3 – Das eigentliche Problem ---------------------------------- -->
+<section>
+  <p class="eyebrow">Das eigentliche Problem</p>
+  <h2>Der Unfall dauert zehn Sekunden. Was danach kommt, dauert zwei Wochen.</h2>
+  <p class="lede">7:42 Uhr, Kreuzung in Elmshorn. Jemand nimmt Ihnen die Vorfahrt. Blech, Schreck, Personalien — und Sie denken: Gut, ich war nicht schuld, das regelt sich.</p>
+  <p>Es regelt sich nicht von selbst. Am selben Nachmittag ruft die Versicherung des Unfallgegners an und sagt einen Satz, der freundlich klingt: „Wir regeln das für Sie.“ Zwei Tage später steht ein Prüfer vor Ihrem Auto, den Sie nicht bestellt haben. Dann kommen die Termine, die Formulare, die Rückfragen. Und der Anruf der Werkstatt, dass es drei Wochen dauert.</p>
+  <p>Sie sitzen am Freitagabend am Küchentisch mit einem Stapel Zettel, den Sie nicht sortieren können, und einer Frage, die Sie nicht loswerden: <strong>Bleibe ich am Ende auf etwas sitzen, obwohl ich nichts falsch gemacht habe?</strong></p>
+</section>
+
+<!-- ABSCHNITT 4 – Die fünf Schmerzpunkte ----------------------------------- -->
+<section>
+  <p class="eyebrow">Was Ihnen jetzt niemand von selbst sagt</p>
+  <h2>Fünf Dinge, die Sie Geld kosten, wenn Sie sie nicht kennen</h2>
+  <div class="grid g2" style="margin-top:26px">
+
+    <article class="card pain">
+      <h3>„Wir regeln das für Sie“ ist kein Angebot. Es ist eine Steuerung.</h3>
+      <p>Die gegnerische Versicherung wird nicht dafür bezahlt, dass Sie zufrieden sind. Sie wird dafür bezahlt, dass der Schaden klein bleibt.</p>
+      <p class="impact">Nach einem unverschuldeten Unfall dürfen Sie Werkstatt und Sachverständigen frei wählen — auch gegen den Vorschlag der Gegenseite.</p>
+    </article>
+
+    <article class="card pain">
+      <h3>Der Gutachter der Gegenseite ist nicht Ihr Gutachter.</h3>
+      <p>Ein Prüfer im Auftrag der gegnerischen Versicherung schaut auf denselben Schaden — aber mit einem anderen Auftrag.</p>
+      <p class="impact">Ein unabhängiger Sachverständiger dokumentiert den Schaden neutral und hält auch Positionen fest, die sonst untergehen — etwa die Wertminderung, also den Wertverlust, den Ihr Auto durch den Unfall dauerhaft behält.</p>
+    </article>
+
+    <article class="card pain">
+      <h3>Das Geld, das niemand von sich aus auszahlt.</h3>
+      <p>Wertminderung, Nutzungsausfall (eine Entschädigung für die Tage ohne Auto), Mietwagen, Gutachter- und Anwaltskosten.</p>
+      <p class="impact">Diese Positionen müssen begründet und nachgewiesen werden. Wer sie nicht kennt, fragt nicht danach — und bekommt sie nicht.</p>
+    </article>
+
+    <article class="card pain">
+      <h3>Der Riss in der Scheibe wird zur HU-Falle.</h3>
+      <p>Ein Steinschlag im Sichtfeld des Fahrers bedeutet: keine Plakette bei der Hauptuntersuchung.</p>
+      <p class="impact">Scheibe und Unfallschaden gehören in einen Vorgang, nicht in zwei Termine an zwei Orten. Bei uns ist das Autoglas im eigenen Haus.</p>
+    </article>
+
+    <article class="card pain">
+      <h3>Zwei Wochen Papierkrieg statt einem Anruf.</h3>
+      <p>Gutachter, Karosserie, Scheibe, Mietwagen, Abrechnung, Rückfragen der Versicherung — fünf Stellen, die nichts voneinander wissen.</p>
+      <p class="impact">Jede dieser Stellen erwartet, dass Sie den Überblick behalten. Genau den haben Sie nach einem Unfall nicht.</p>
+    </article>
+
+    <article class="card" style="background:var(--dark);border-color:var(--dark);display:flex;flex-direction:column;justify-content:center">
+      <h3 style="color:#fff">Sie müssen das nicht allein sortieren.</h3>
+      <p style="color:var(--dark-ink-2)">Schreiben Sie uns kurz, was passiert ist. Die Ersteinschätzung kostet nichts und verpflichtet zu nichts.</p>
+      <p style="margin-top:16px">
+        <a class="cta" href="https://api.whatsapp.com/send?phone=4917620289430&amp;text=Guten%20Tag%2C%20ich%20hatte%20einen%20Unfall%20und%20brauche%20Hilfe.%20K%C3%B6nnen%20Sie%20mir%20weiterhelfen%3F">Jetzt Unfall melden<small>per WhatsApp · kostenlos</small></a>
+      </p>
+    </article>
+
+  </div>
+</section>
+
+<!-- ABSCHNITT 5 – Was wir übernehmen --------------------------------------- -->
+<section>
+  <p class="eyebrow">Aus einer Hand</p>
+  <h2>Was wir übernehmen — damit Sie es nicht übernehmen müssen</h2>
+  <div class="grid g2" style="align-items:start">
+    <div>
+      <ul class="plain">
+        <li><strong>Unabhängiges Kfz-Gutachten</strong> — ein neutraler Sachverständiger, den wir beauftragen, nicht die Gegenseite.</li>
+        <li><strong>Werkstatt und Autoglas</strong> — Karosserie und Scheibe in einem Vorgang, koordiniert über unsere eigene Werkstatt in Elmshorn.</li>
+        <li><strong>Mietwagen oder Nutzungsausfall</strong> — damit Sie weiter zur Arbeit kommen.</li>
+        <li><strong>Abschleppen und Bergen</strong> — wenn das Auto nicht mehr fährt.</li>
+        <li><strong>Der gesamte Schriftverkehr</strong> mit der gegnerischen Versicherung und den Unfallbeteiligten.</li>
+        <li><strong>Vermittlung eines Verkehrsrechtsanwalts</strong> — auf Wunsch, aus einem eingespielten Netzwerk.</li>
+        <li><strong>Hagelschaden</strong> — über unseren Partner, Ausbeulen ohne Lackieren, wo es möglich ist.</li>
+      </ul>
+    </div>
+    <!-- PLATZHALTER BILD: Werkstatt -->
+    <div class="ph">
+      <b>Werkstatt-Aufnahme</b>
+      <span>Annahme oder Hebebühne, echtes Foto aus dem Betrieb in der Robert-Bosch-Straße. Kein Stockfoto — die Kunden erkennen das sofort.</span>
+    </div>
+  </div>
+</section>
+
+<!-- ABSCHNITT 6 – So läuft es ab -------------------------------------------- -->
+<section>
+  <p class="eyebrow">So läuft es ab</p>
+  <h2>Drei Schritte. Der erste dauert zwei Minuten.</h2>
+  <ol class="steps" style="margin-top:26px">
+    <li><b>Sie melden sich</b><span>Per WhatsApp oder Anruf, rund um die Uhr. Ein paar Sätze reichen: was passiert ist, wo, und ob das Auto noch fährt.</span></li>
+    <li><b>Wir übernehmen</b><span>Gutachter, Werkstatt, Scheibe, Mietwagen, Abschleppen und der Schriftverkehr laufen über einen Vorgang. Sie bekommen von uns Bescheid, nicht von fünf Stellen.</span></li>
+    <li><b>Sie fahren wieder</b><span>Wir sagen Ihnen vorher, wie lange es dauert, und melden uns, wenn sich etwas ändert.</span></li>
+  </ol>
+</section>
+
+<!-- ABSCHNITT 7 – Warum wir -------------------------------------------------- -->
+<section>
+  <p class="eyebrow">Der Unterschied</p>
+  <h2>Vier Sätze, die ein Portal über sich nicht sagen kann</h2>
+  <div class="grid g2" style="margin-top:26px">
+    <article class="card"><h3>Ein Ansprechpartner statt sechs Telefonaten.</h3><p>Gutachten, Karosserie, Scheibe, Mietwagen und Abrechnung laufen bei uns über einen Vorgang und über eine Nummer.</p></article>
+    <article class="card"><h3>Autoglas ist im eigenen Haus.</h3><p>Über das KS Autoglas Zentrum Elmshorn wandert die gerissene Scheibe nicht in einen zweiten Vorgang. Der HU-Killer wird direkt miterledigt.</p></article>
+    <article class="card"><h3>Wir werden nicht von der Gegenseite bezahlt.</h3><p>Deshalb stehen wir auf der Seite des Geschädigten — und nicht auf der Seite dessen, der den Schaden klein halten möchte.</p></article>
+    <article class="card"><h3>Seit 19 Jahren an derselben Adresse in Elmshorn.</h3><p>Eigene Werkstatt, eigenes Autoglas-Zentrum, ein Name an der Tür. Kein Callcenter, kein Portal, das Ihre Anfrage weiterverkauft.</p></article>
+  </div>
+</section>
+
+<!-- ABSCHNITT 8 – Wer sich kümmert ------------------------------------------ -->
+<section>
+  <div class="grid g2" style="align-items:center">
+    <!-- PLATZHALTER BILD: Portrait -->
+    <div class="ph" style="min-height:280px">
+      <b>Portrait Thomas Kraft</b>
+      <span>Halbnah, in der Werkstatt oder vor dem Betrieb. Freundlich und wach, kein Studio-Hochglanz. Dieses Bild entscheidet mit, ob jemand anruft.</span>
+    </div>
+    <div>
+      <p class="eyebrow">Wer sich kümmert</p>
+      <h2>Thomas Kraft</h2>
+      <p>Ihren Vorgang bearbeitet kein Ticketsystem, sondern ein Mensch, der seit 19 Jahren in Elmshorn eine Werkstatt und ein Autoglas-Zentrum führt — AutoCrew Kraft und das KS Autoglas Zentrum in der Robert-Bosch-Straße.</p>
+      <p>Das ist der Grund, warum bei uns Gutachten, Karosserie und Scheibe zusammenlaufen: Wir organisieren das nicht auf dem Papier, wir machen es selbst.</p>
+      <p class="cta-row"><a class="cta-2" href="tel:+4917620289430">Thomas Kraft anrufen: 0176 20 28 94 30</a></p>
+    </div>
+  </div>
+</section>
+
+<!-- ABSCHNITT 9 – Vertrauen --------------------------------------------------
+     ECHTE Bewertung von unfallhilfenord24.de. Weitere Bewertungen bitte
+     WÖRTLICH einsetzen – nichts erfinden. -->
+<section>
+  <p class="eyebrow">Was Kunden sagen</p>
+  <h2>Belege statt Behauptungen</h2>
+
+  <div class="quote" style="margin:24px 0">
+    <p class="stars" aria-label="5 von 5 Sternen">★★★★★</p>
+    <p>„Sehr schnelle und kompetente Hilfe nach meinem Unfall. Herr Kraft hat sich sofort gekümmert, alles verständlich erklärt und die Abwicklung mit der Anwaltskanzlei lief reibungslos. Absolut empfehlenswert!“</p>
+    <footer>Olga Piunova · Juni 2026</footer>
+  </div>
+
+  <div class="grid g2">
+    <!-- PLATZHALTER BEWERTUNG 1 -->
+    <div class="ph" style="min-height:150px"><b>Weitere Bewertung einsetzen</b><span>Zwei Google-Bewertungen aus dem Werkstatt- und Autoglas-Geschäft, wörtlich mit Vorname, Nachname und Datum. Bitte nur freigegebene Texte.</span></div>
+    <!-- PLATZHALTER BEWERTUNG 2 -->
+    <div class="ph" style="min-height:150px"><b>Weitere Bewertung einsetzen</b><span>Am besten eine, in der Tempo vorkommt, und eine, in der die Abrechnung mit der Versicherung vorkommt.</span></div>
+  </div>
+
+  <ul class="badges">
+    <li>4,9 bei Google<em>für unser KS Autoglas Zentrum Elmshorn</em></li>
+    <li>TÜV SÜD zertifiziert<em>KS Autoglas Zentrum — Nachweis einsetzen</em></li>
+    <li>ISO 9001<em>KS Autoglas Zentrum — Nachweis einsetzen</em></li>
+    <li>19 Jahre<em>Werkstatt in Elmshorn</em></li>
+  </ul>
+  <p style="font-size:.88rem;color:var(--ink-2);margin-top:14px">Zertifizierungen und Bewertungssterne stammen aus unserem Autoglas- und Werkstattbetrieb und sind deshalb ausdrücklich so gekennzeichnet.</p>
+</section>
+
+<!-- ABSCHNITT 10 – Kosten ---------------------------------------------------
+     WICHTIG: Keine Zusagen zur Höhe, keine Garantien. Formulierung bewusst
+     vorsichtig gehalten und mit der Ratgeber-Sprache der Website abgeglichen. -->
+<section>
+  <p class="eyebrow">Die Frage, die sich jeder zuerst stellt</p>
+  <h2>Was kostet mich das?</h2>
+  <p class="lede">Die Ersteinschätzung ist kostenlos und unverbindlich. Sie erfahren, ob wir Ihnen helfen können, bevor irgendetwas beauftragt wird.</p>
+  <div class="grid g2" style="margin-top:22px">
+    <article class="card">
+      <h3>Unverschuldeter Unfall</h3>
+      <p>Bei einem unverschuldeten Unfall werden Positionen wie Gutachten, Reparatur, Mietwagen und Anwaltskosten in der Regel über die gegnerische Kfz-Haftpflicht abgerechnet — nach Haftungsquote, Erforderlichkeit und Nachweis, nicht pauschal in voller Höhe.</p>
+      <p>Für Sie heißt das: In vielen Fällen entstehen Ihnen keine eigenen Kosten. Ob und in welchem Umfang etwas übernommen wird, hängt vom Einzelfall ab — das sagen wir Ihnen vorher, nicht hinterher.</p>
+    </article>
+    <article class="card">
+      <h3>Alle anderen Fälle</h3>
+      <p>Wenn keine gegnerische Versicherung einsteht — etwa bei Teilschuld, bei einem Kaskofall oder bei einem Auftrag ohne Unfallgegner — rechnen wir nach Aufwand ab.</p>
+      <p>Sie bekommen den Rahmen genannt, bevor wir anfangen. Es gibt bei uns keine Position, über die Sie erst auf der Rechnung stolpern.</p>
+    </article>
+  </div>
+</section>
+
+<!-- ABSCHNITT 11 – Grenzen --------------------------------------------------- -->
+<section>
+  <p class="eyebrow">Damit Sie wissen, woran Sie sind</p>
+  <h2>Was wir nicht tun</h2>
+  <ul class="plain">
+    <li><strong>Wir beraten Sie nicht rechtlich.</strong> Wir organisieren die Abwicklung. Für die rechtliche Prüfung vermitteln wir auf Wunsch einen erfahrenen Verkehrsrechtsanwalt.</li>
+    <li><strong>Wir sagen Ihnen keine Summe zu.</strong> Niemand kann seriös vorhersagen, was eine Versicherung am Ende erstattet. Wer Ihnen das verspricht, verspricht zu viel.</li>
+    <li><strong>Wir reden Ihnen nichts ein.</strong> Wenn Ihr Fall so klein ist, dass sich der Aufwand nicht lohnt, sagen wir Ihnen das im ersten Gespräch.</li>
+  </ul>
+</section>
+
+<!-- ABSCHNITT 12 – Ratgeber --------------------------------------------------
+     Links zeigen auf die bestehenden Artikel auf unfallhilfenord24.de -->
+<section>
+  <p class="eyebrow">Zum Nachlesen, in Ruhe</p>
+  <h2>Kein Notfall? Dann lesen Sie das hier, bevor einer passiert.</h2>
+  <div class="grid g3" style="margin-top:24px">
+    <a class="art" href="https://unfallhilfenord24.de/ratgeber/gutachter-der-versicherung-akzeptieren">
+      <span class="cat">Versicherung</span>
+      <b>Muss ich den Gutachter der Versicherung akzeptieren?</b>
+      <span>Warum Sie frei wählen dürfen und worauf es dabei ankommt.</span>
+    </a>
+    <a class="art" href="https://unfallhilfenord24.de/ratgeber/werkstatt-frei-waehlen-ihr-recht-als-geschaedigter">
+      <span class="cat">Ihr Recht</span>
+      <b>Werkstatt frei wählen: Ihr Recht als Geschädigter</b>
+      <span>Wann die Versicherung auf eine günstigere Werkstatt verweisen darf — und wann nicht.</span>
+    </a>
+    <a class="art" href="https://unfallhilfenord24.de/ratgeber/wer-zahlt-mietwagen-nach-unfall">
+      <span class="cat">Mietwagen</span>
+      <b>Wer zahlt den Mietwagen nach einem Unfall?</b>
+      <span>Mietwagen oder Nutzungsausfall, welche Klasse angemessen ist, wie Sie die Dauer nachweisen.</span>
+    </a>
+  </div>
+  <p style="margin-top:20px"><a href="https://unfallhilfenord24.de/ratgeber">Alle Ratgeber-Artikel ansehen</a></p>
+</section>
+
+<!-- ABSCHNITT 13 – Kontakt / Haupt-Handlung --------------------------------- -->
+<section id="melden">
+  <p class="eyebrow">Jetzt melden</p>
+  <h2>Erzählen Sie uns kurz, was passiert ist.</h2>
+  <p class="lede">Zwei Minuten genügen für die erste Einschätzung. Kostenlos, unverbindlich, rund um die Uhr.</p>
+
+  <div class="cta-row" style="margin-bottom:34px">
+    <a class="cta" href="https://api.whatsapp.com/send?phone=4917620289430&amp;text=Guten%20Tag%2C%20ich%20hatte%20einen%20Unfall%20und%20brauche%20Hilfe.%20K%C3%B6nnen%20Sie%20mir%20weiterhelfen%3F">
+      Jetzt Unfall melden<small>per WhatsApp · Text ist schon eingetragen</small>
+    </a>
+    <a class="cta-2" href="tel:+4917620289430">Anrufen: 0176 20 28 94 30</a>
+  </div>
+
+  <!-- FORMULAR – bewusst klein und farblos, damit es WhatsApp nicht kannibalisiert.
+       Es öffnet das E-Mail-Programm des Besuchers (mailto).
+       ANFRAGEN WOANDERS HIN? Dann action= auf die URL deines Formulardienstes
+       ändern und enctype-Zeile entfernen. -->
+  <h3>Lieber schreiben? Vier Felder genügen.</h3>
+  <form action="mailto:hilfe@unfallhilfenord24.de" method="post" enctype="text/plain">
+    <div class="field">
+      <label for="name">Ihr Name</label>
+      <input id="name" name="Name" type="text" autocomplete="name" required>
+    </div>
+    <div class="field">
+      <label for="tel">Telefonnummer
+        <span class="hint">Damit wir zurückrufen können — schneller als jede E-Mail.</span>
+      </label>
+      <input id="tel" name="Telefon" type="tel" autocomplete="tel" inputmode="tel" required>
+    </div>
+    <div class="field">
+      <label for="wann">Wann und wo ist es passiert?
+        <span class="hint">Ungefähr genügt, zum Beispiel: gestern früh, Kreuzung Hamburger Straße.</span>
+      </label>
+      <input id="wann" name="Wann und wo" type="text">
+    </div>
+    <div class="field">
+      <label for="was">Was ist passiert?</label>
+      <textarea id="was" name="Beschreibung"></textarea>
+    </div>
+    <div class="field check">
+      <input id="dsgvo" name="Datenschutz akzeptiert" type="checkbox" value="ja" required>
+      <label for="dsgvo" style="font-weight:500">Ich bin damit einverstanden, dass meine Angaben zur Bearbeitung meiner Anfrage gespeichert werden. Hinweise dazu in der Datenschutzerklärung.</label>
+    </div>
+    <button type="submit">Anfrage absenden</button>
+    <p style="font-size:.85rem;color:var(--ink-2);margin-top:12px">Das Formular öffnet Ihr E-Mail-Programm. Geht es schneller? Dann schreiben Sie uns direkt per WhatsApp.</p>
+  </form>
+</section>
+
+<!-- ABSCHNITT 14 – Standort und Erreichbarkeit ------------------------------- -->
+<section>
+  <div class="grid g2" style="align-items:start">
+    <div>
+      <p class="eyebrow">Sie finden uns hier</p>
+      <h2>Elmshorn, Robert-Bosch-Straße</h2>
+      <!-- KONTAKTDATEN: Anschrift -->
+      <p>
+        Unfallhilfe Nord 24<br>
+        Robert-Bosch-Straße 1A<br>
+        25335 Elmshorn
+      </p>
+      <p>
+        <strong>Erreichbarkeit:</strong> rund um die Uhr, 7 Tage die Woche.<br>
+        <strong>Einzugsgebiet:</strong> Elmshorn, Pinneberg, Hamburg, Schleswig-Holstein.
+      </p>
+      <p class="cta-row">
+        <a class="cta-2" href="tel:+4917620289430">0176 20 28 94 30</a>
+        <a class="cta-2" href="mailto:hilfe@unfallhilfenord24.de">hilfe@unfallhilfenord24.de</a>
+      </p>
+    </div>
+    <!-- PLATZHALTER BILD: Standort -->
+    <div class="ph"><b>Aussenaufnahme des Betriebs</b><span>Gebäude, Einfahrt oder Schild in der Robert-Bosch-Straße. Zeigt, dass es die Adresse wirklich gibt — das ist der Unterschied zu einem Portal.</span></div>
+  </div>
+</section>
+
+</div><!-- /wrap -->
+</main>
+
+<!-- ABSCHNITT 15 – Fusszeile und Pflichtangaben ------------------------------ -->
+<footer class="site">
+  <div class="wrap">
+    <div class="fgrid">
+      <div>
+        <h3>Unfallhilfe Nord 24</h3>
+        <p>Unabhängige Unfallhilfe und Schadenabwicklung für Hamburg, Schleswig-Holstein, Elmshorn und Pinneberg.</p>
+        <p>Schnell. Unabhängig. Kompetent.</p>
+      </div>
+      <div>
+        <h3>Kontakt</h3>
+        <ul>
+          <li><a href="tel:+4917620289430">0176 20 28 94 30</a></li>
+          <li><a href="mailto:hilfe@unfallhilfenord24.de">hilfe@unfallhilfenord24.de</a></li>
+          <li>Robert-Bosch-Straße 1A, 25335 Elmshorn</li>
+          <li>Rund um die Uhr erreichbar</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Mehr</h3>
+        <ul>
+          <li><a href="https://unfallhilfenord24.de/ratgeber">Ratgeber</a></li>
+          <li><a href="https://www.instagram.com/unfallhilfe.nord24">Instagram</a></li>
+          <li><a href="https://www.facebook.com/profile.php?id=61590415689460">Facebook</a></li>
+          <li><a href="https://www.ks-autoglaszentrum-elmshorn.de/">KS Autoglas Zentrum Elmshorn</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- IMPRESSUM – PFLICHTANGABEN
+         Die mit "ERGÄNZEN" markierten Zeilen konnte ich nicht ermitteln.
+         Bitte aus dem bestehenden Impressum übernehmen, bevor die Seite live geht. -->
+    <details class="legal">
+      <summary>Impressum</summary>
+      <div>
+        <p>
+          Unfallhilfe Nord 24<br>
+          Inhaber: Thomas Kraft<br>
+          Robert-Bosch-Straße 1A<br>
+          25335 Elmshorn<br>
+          Telefon: 0176 20 28 94 30<br>
+          E-Mail: hilfe@unfallhilfenord24.de
+        </p>
+        <p>
+          <span class="todo">ERGÄNZEN:</span> Rechtsform<br>
+          <span class="todo">ERGÄNZEN:</span> Umsatzsteuer-Identifikationsnummer nach §&nbsp;27a UStG<br>
+          <span class="todo">ERGÄNZEN:</span> Registergericht und Registernummer, falls eingetragen<br>
+          <span class="todo">ERGÄNZEN:</span> Verantwortlich für den Inhalt nach §&nbsp;18 Abs.&nbsp;2 MStV
+        </p>
+        <p>Unfallhilfe Nord 24 erbringt keine Rechtsberatung. Für die rechtliche Prüfung im Einzelfall vermitteln wir auf Wunsch Verkehrsrechtsanwälte.</p>
+      </div>
+    </details>
+
+    <details class="legal">
+      <summary>Datenschutzerklärung</summary>
+      <div>
+        <p><span class="todo">ERGÄNZEN:</span> Hier gehört die vollständige Datenschutzerklärung hin — Verantwortlicher, Zwecke und Rechtsgrundlagen der Verarbeitung, Speicherdauer, Betroffenenrechte, Hinweis auf die Verarbeitung bei Kontaktaufnahme per WhatsApp.</p>
+        <p>Diese Seite lädt keine externen Schriften, keine Karten und keine Analyse-Werkzeuge. Es werden keine Cookies gesetzt. Beim Klick auf den WhatsApp-Button verlassen Sie diese Seite.</p>
+      </div>
+    </details>
+
+    <p style="margin-top:24px;font-size:.85rem">© 2026 Unfallhilfe Nord 24</p>
+  </div>
+</footer>
+
+<!-- Daumenleiste – nur auf Mobilgeräten sichtbar -->
+<nav class="thumb" aria-label="Schnellkontakt">
+  <a class="w" href="https://api.whatsapp.com/send?phone=4917620289430&amp;text=Guten%20Tag%2C%20ich%20hatte%20einen%20Unfall%20und%20brauche%20Hilfe.%20K%C3%B6nnen%20Sie%20mir%20weiterhelfen%3F">Unfall melden</a>
+  <a class="t" href="tel:+4917620289430">Anrufen</a>
+</nav>
+
+</body>
+</html>
