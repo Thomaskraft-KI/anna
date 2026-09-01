@@ -127,7 +127,25 @@ header.top{
 }
 .top-tel{font-weight:700;text-decoration:none;white-space:nowrap;font-size:.95rem}
 .top-tel span{display:block;font-size:.72rem;font-weight:600;color:var(--ink-2);letter-spacing:.04em}
-@media(max-width:600px){.top-tel{display:none}}
+/* Auf schmalen Schirmen wird aus der Nummer ein Hörer-Knopf,
+   damit der Anruf nie aus der Kopfzeile verschwindet. */
+.top-call{display:none;align-items:center;justify-content:center;width:48px;height:48px;
+  border:1.5px solid var(--rule-2);border-radius:var(--radius);color:var(--ink)}
+.top-call:hover{border-color:var(--ink)}
+.top-call svg{width:22px;height:22px}
+@media(max-width:600px){.top-tel{display:none}.top-call{display:inline-flex}}
+
+/* ---------- Fusszeile: unterer Riegel ---------- */
+.foot-bar{
+  margin-top:30px;padding-top:18px;border-top:1px solid rgba(159,182,191,.3);
+  display:flex;flex-wrap:wrap;gap:10px 22px;align-items:center;justify-content:space-between;
+}
+.foot-bar nav{display:flex;flex-wrap:wrap;gap:10px 20px}
+.foot-bar a{font-size:.92rem;font-weight:600}
+.foot-bar p{margin:0;font-size:.88rem}
+footer.site dl.hours{margin:0;display:grid;grid-template-columns:auto 1fr;gap:4px 12px;font-size:.95rem}
+footer.site dl.hours dt{color:#fff;font-weight:700}
+footer.site dl.hours dd{margin:0;color:var(--dark-ink-2)}
 
 /* ---------- Hero ---------- */
 .hero{background:var(--dark);color:var(--dark-ink);padding:44px 0 48px}
@@ -335,6 +353,9 @@ details.legal .todo{color:var(--accent);font-weight:700}
     </nav>
     <div style="display:flex;align-items:center;gap:12px">
       <a class="top-tel" href="tel:+4917620289430">0176 20 28 94 30<span>Rund um die Uhr</span></a>
+      <a class="top-call" href="tel:+4917620289430" aria-label="Anrufen: 0176 20 28 94 30">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.6 3.5h3l1.5 3.7-1.9 1.4a12.5 12.5 0 0 0 5.2 5.2l1.4-1.9 3.7 1.5v3a1.6 1.6 0 0 1-1.7 1.6A16.1 16.1 0 0 1 5 5.2 1.6 1.6 0 0 1 6.6 3.5z"/></svg>
+      </a>
       <button class="nav-toggle" id="navToggle" type="button" aria-expanded="false" aria-controls="nav" aria-label="Menü öffnen">
         <svg class="bars" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
         <svg class="x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19"/></svg>
@@ -674,8 +695,11 @@ details.legal .todo{color:var(--accent);font-weight:700}
           <li><a href="tel:+4917620289430">0176 20 28 94 30</a></li>
           <li><a href="mailto:hilfe@unfallhilfenord24.de">hilfe@unfallhilfenord24.de</a></li>
           <li>Robert-Bosch-Straße 1A, 25335 Elmshorn</li>
-          <li>Rund um die Uhr erreichbar</li>
         </ul>
+        <dl class="hours" style="margin-top:14px">
+          <dt>Erreichbar</dt><dd>rund um die Uhr, 7 Tage die Woche</dd>
+          <dt>Gebiet</dt><dd>Elmshorn · Pinneberg · Hamburg · Schleswig-Holstein</dd>
+        </dl>
       </div>
       <div>
         <h3>Mehr</h3>
@@ -706,7 +730,7 @@ details.legal .todo{color:var(--accent);font-weight:700}
     <!-- IMPRESSUM – PFLICHTANGABEN
          Übernommen aus dem Bestand (Repository www-unfallhilfenord24-de,
          src/lib/legal-text-fallbacks.ts). Bei Änderungen dort auch hier nachziehen. -->
-    <details class="legal">
+    <details class="legal" id="impressum">
       <summary>Impressum</summary>
       <div>
         <p>
@@ -730,7 +754,7 @@ details.legal .todo{color:var(--accent);font-weight:700}
       </div>
     </details>
 
-    <details class="legal">
+    <details class="legal" id="datenschutz">
       <summary>Datenschutzerklärung</summary>
       <div>
         <p><strong>Zu dieser Seite:</strong> Sie lädt keine externen Schriften, keine Karten und keine Analyse-Werkzeuge und setzt keine Cookies. Beim Klick auf den WhatsApp-Button verlassen Sie diese Seite.</p>
@@ -779,7 +803,15 @@ E-Mail: hilfe@unfallhilfenord24.de</p>
       </div>
     </details>
 
-    <p style="margin-top:24px;font-size:.85rem">© 2026 Unfallhilfe Nord 24</p>
+    <div class="foot-bar">
+      <nav aria-label="Rechtliches">
+        <a href="#impressum">Impressum</a>
+        <a href="#datenschutz">Datenschutz</a>
+        <a href="https://unfallhilfenord24.de/ratgeber">Ratgeber</a>
+        <a href="#melden">Unfall melden</a>
+      </nav>
+      <p>© 2026 Unfallhilfe Nord 24 · Inhaber Thomas Kraft</p>
+    </div>
   </div>
 </footer>
 
@@ -809,6 +841,13 @@ E-Mail: hilfe@unfallhilfenord24.de</p>
     if(btn.getAttribute('aria-expanded')==='true'&&!nav.contains(e.target)&&!btn.contains(e.target)) set(false);
   });
   addEventListener('resize',function(){ if(innerWidth>900) set(false); });
+
+  // Links im Fussriegel klappen Impressum und Datenschutz auf
+  document.addEventListener('click',function(e){
+    var a=e.target.closest('a[href^="#"]'); if(!a) return;
+    var el=document.getElementById(a.getAttribute('href').slice(1));
+    if(el&&el.tagName==='DETAILS'){ el.open=true; }
+  });
 })();
 </script>
 
