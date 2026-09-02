@@ -36,17 +36,45 @@ diesem Repo: Sie sind Teil der Schulung, nicht Teil des laufenden Betriebs.
 | Datei | Was es ist |
 |---|---|
 | `unfallhilfe-nord-24.html` | Konversionsorientierte Landingpage für Unfallhilfe Nord 24, gebaut aus einem Kunden-Briefing. Eine einzige Datei, läuft per Doppelklick, keine externen Abhängigkeiten. |
-| `freebie/unfallcheckliste.html` | Quelldatei der Checkliste. **Hier ändern**, nie die PDF direkt. |
-| `freebie/unfallcheckliste-unfallhilfe-nord-24.pdf` | Die Checkliste als PDF, zwei Seiten A4. Auf der Landingpage im Abschnitt „Zum Mitnehmen" verlinkt. |
+| `freebie/danke.html` | Seite nach dem Absenden des Formulars. |
+| `freebie/ce5c8f7cde3d/…pdf` | Die Checkliste. Liegt bewusst unter einem nicht erratbaren Pfad und ist **nirgends verlinkt** — den Link bekommt nur, wer das Formular ausfüllt. |
 
-Die PDF neu erzeugen nach einer Änderung an der Quelldatei:
+Die Quelldatei der Checkliste liegt **außerhalb** von `website/`, unter
+`freebie-quelle/unfallcheckliste.html`. Das ist Absicht: alles in `website/`
+wird veröffentlicht, und die Quelle würde den Inhalt am Formular vorbei
+verfügbar machen. Dort ändern, nie die PDF direkt, dann neu erzeugen:
 
 ```bash
-cd website/freebie
 chromium --headless --no-pdf-header-footer \
-  --print-to-pdf=unfallcheckliste-unfallhilfe-nord-24.pdf \
-  unfallcheckliste.html
+  --print-to-pdf=website/freebie/ce5c8f7cde3d/unfallcheckliste-unfallhilfe-nord-24.pdf \
+  freebie-quelle/unfallcheckliste.html
 ```
+
+### Leads: wie der Download abläuft
+
+Das Formular im Abschnitt „Zum Mitnehmen" schickt an
+[FormSubmit](https://formsubmit.co/) (`hilfe@unfallhilfenord24.de`). FormSubmit
+mailt die Anfrage an uns und schickt dem Interessenten automatisch den
+Download-Link.
+
+**Einmalig nötig:** Beim ersten Absenden schickt FormSubmit eine
+Aktivierungsmail an `hilfe@unfallhilfenord24.de`. Erst nach dem Klick darauf
+funktioniert das Formular. Also einmal selbst ausfüllen und bestätigen.
+
+Grenzen, die man kennen sollte:
+
+- Der Schutz ist **weich**. Die PDF liegt unter einer öffentlichen Adresse, nur
+  unter einem schwer zu erratenden Pfad. Wer den Link weitergibt, gibt die
+  Datei weiter. Und da dieses Repo öffentlich ist, ist die Datei ohnehin über
+  GitHub auffindbar. Gegen Google und beiläufiges Teilen hilft es, gegen
+  jemanden der sucht nicht.
+- FormSubmit sitzt in den USA. Die Datenschutzerklärung der Seite hat dafür
+  einen eigenen Abschnitt bekommen — **den bitte prüfen lassen**, bevor das
+  unter eigener Domain läuft. Für Dauerbetrieb ist ein EU-Dienst mit
+  AV-Vertrag (z. B. Brevo) die sauberere Wahl.
+- Die Einwilligung deckt **nur** den Versand der Checkliste. Für Werbung an
+  diese Adressen braucht es eine gesonderte Einwilligung, in der Praxis mit
+  Double-Opt-In.
 
 ### Wo die Seite online steht
 
