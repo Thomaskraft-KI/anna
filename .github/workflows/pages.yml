@@ -1,8 +1,12 @@
 name: Landingpage veroeffentlichen
 
-# Baut den Inhalt von website/ und stellt ihn ueber GitHub Pages online.
-# Laeuft bei jeder Aenderung an website/ auf main — und von Hand ueber
-# "Actions" -> diesen Workflow -> "Run workflow".
+# GitHub Pages liefert in diesem Repo den Branch gh-pages aus.
+# Dieser Workflow haelt gh-pages mit dem Ordner website/ auf main synchron:
+# jede Aenderung an website/ landet automatisch auf der veroeffentlichten Seite.
+#
+# Hinweis: Die Pages-Seite wurde durch das Anlegen des Branches gh-pages
+# automatisch aktiviert. Deshalb bewusst KEIN actions/deploy-pages —
+# das setzt die Quelle "GitHub Actions" voraus, hier ist es der Branch.
 
 on:
   push:
@@ -13,45 +17,50 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
-  pages: write
-  id-token: write
+  contents: write
 
 concurrency:
-  group: pages
+  group: gh-pages
   cancel-in-progress: false
 
 jobs:
-  bauen:
+  veroeffentlichen:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
 
-      # enablement: true legt die Pages-Seite an, falls sie noch nicht
-      # eingerichtet ist — spart den Klick unter Settings -> Pages.
-      - uses: actions/configure-pages@v5
-        with:
-          enablement: true
-
-      - name: Veroeffentlichungsordner zusammenstellen
+      - name: website/ nach gh-pages uebertragen
         run: |
-          mkdir -p _site
-          cp -r website/. _site/
+          set -euo pipefail
+
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          # Den zu veroeffentlichenden Stand ausserhalb des Repos zwischenlagern,
+          # damit er den Branch-Wechsel ueberlebt.
+          stand="$(mktemp -d)"
+          cp -r website/. "$stand/"
           # Die Landingpage soll auch direkt unter der Wurzeladresse liegen.
-          cp website/unfallhilfe-nord-24.html _site/index.html
+          cp website/unfallhilfe-nord-24.html "$stand/index.html"
           # Kein Jekyll-Umbau, die Dateien sollen 1:1 ausgeliefert werden.
-          touch _site/.nojekyll
+          touch "$stand/.nojekyll"
 
-      - uses: actions/upload-pages-artifact@v3
-        with:
-          path: _site
+          if git fetch --depth=1 origin gh-pages 2>/dev/null; then
+            git checkout -B gh-pages FETCH_HEAD
+          else
+            git checkout --orphan gh-pages
+          fi
 
-  veroeffentlichen:
-    needs: bauen
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-      - id: deployment
-        uses: actions/deploy-pages@v4
+          # Alten Stand vollstaendig ersetzen, damit geloeschte Dateien
+          # auch auf der Seite verschwinden.
+          find . -mindepth 1 -maxdepth 1 ! -name '.git' -exec rm -rf {} +
+          cp -r "$stand/." .
+
+          git add -A
+          if git diff --cached --quiet; then
+            echo "Keine Aenderung — nichts zu veroeffentlichen."
+            exit 0
+          fi
+
+          git commit -m "Landingpage aktualisieren (Stand von website/ auf main)"
+          git push origin gh-pages

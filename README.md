@@ -37,8 +37,22 @@ diesem Repo: Sie sind Teil der Schulung, nicht Teil des laufenden Betriebs.
 |---|---|
 | `unfallhilfe-nord-24.html` | Konversionsorientierte Landingpage für Unfallhilfe Nord 24, gebaut aus einem Kunden-Briefing. Eine einzige Datei, läuft per Doppelklick, keine externen Abhängigkeiten. |
 
-Wenn eine dieser Seiten wirklich online gehen soll, gehört sie vorher in das
-Repo der jeweiligen Marke — hier ist sie Übungsstand, nicht Livestand.
+### Wo die Seite online steht
+
+**https://thomaskraft-ki.github.io/anna/**
+
+Ausgeliefert wird der Branch `gh-pages`. Der Workflow
+`.github/workflows/pages.yml` schreibt den Inhalt von `website/` bei jeder
+Änderung auf `main` dorthin — also nichts von Hand nach `gh-pages` kopieren,
+immer `website/` ändern.
+
+Die Landingpage steht bewusst auf `noindex` (Zeile 14 im HTML), damit sie
+`unfallhilfenord24.de` keine Rankings wegnimmt. Sie ist erreichbar und
+teilbar, taucht aber nicht bei Google auf.
+
+Die Adresse oben ist eine Übungs- und Vorschauadresse. Wenn die Seite unter
+der eigenen Domain laufen soll, gehört sie in das Repo der jeweiligen Marke
+(`www-unfallhilfenord24-de`) — dort mit Domain, Canonical und ohne `noindex`.
 
 ## Nach der Schulung
 
