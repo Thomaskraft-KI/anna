@@ -668,14 +668,17 @@ details.legal .todo{color:var(--accent);font-weight:700}
       Zwei Seiten A4 zum Ausdrucken — was Sie an der Unfallstelle der Reihe nach
       abhaken, welche Fotos Sie brauchen, bevor die Autos bewegt werden, und die
       Posten, die niemand von sich aus auszahlt.</p>
-      <p>PDF · 2 Seiten · kostenlos · kommt sofort per E-Mail</p>
+      <p>PDF · 2 Seiten · kostenlos · Download startet sofort</p>
     </div>
 
     <form class="freebie-form" action="https://formsubmit.co/hilfe@unfallhilfenord24.de" method="POST">
       <input type="hidden" name="_subject" value="Checkliste angefordert (Landingpage)">
       <input type="hidden" name="_template" value="table">
       <input type="hidden" name="_captcha" value="false">
-      <input type="hidden" name="_next" value="https://thomaskraft-ki.github.io/anna/freebie/danke.html">
+      <!-- Nach dem Absenden geht es direkt zur PDF — keine Zwischenseite.
+           Der Autoresponder schickt den Link zusaetzlich per Mail, damit der
+           Interessent ihn spaeter wiederfindet. -->
+      <input type="hidden" name="_next" value="https://thomaskraft-ki.github.io/anna/freebie/ce5c8f7cde3d/unfallcheckliste-unfallhilfe-nord-24.pdf">
       <input type="hidden" name="_autoresponse" value="Guten Tag,\n\nhier ist Ihre Checkliste „Unverschuldeter Unfall: Was in den ersten 24 Stunden zählt“:\n\nhttps://thomaskraft-ki.github.io/anna/freebie/ce5c8f7cde3d/unfallcheckliste-unfallhilfe-nord-24.pdf\n\nZwei Seiten A4 — am besten ausdrucken und ins Handschuhfach legen.\n\nWenn Sie gerade einen Unfall hatten und Hilfe brauchen: Rufen Sie einfach an, rund um die Uhr unter 0176 20 28 94 30. Die Ersteinschätzung kostet nichts und verpflichtet zu nichts.\n\nViele Grüße\nThomas Kraft\nUnfallhilfe Nord 24 · Robert-Bosch-Straße 1A · 25335 Elmshorn\n0176 20 28 94 30 · hilfe@unfallhilfenord24.de">
       <div class="freebie-honig" aria-hidden="true">
         <label>Bitte leer lassen<input type="text" name="_honey" tabindex="-1" autocomplete="off"></label>
@@ -690,13 +693,13 @@ details.legal .todo{color:var(--accent);font-weight:700}
 
       <label class="zustimmung">
         <input type="checkbox" name="einwilligung" value="ja" required>
-        <span>Ich möchte die Checkliste per E-Mail erhalten und bin damit einverstanden,
-        dass meine Angaben dafür verarbeitet werden. Hinweise dazu in der
-        <a href="#datenschutz">Datenschutzerklärung</a>.</span>
+        <span>Ich möchte die Checkliste herunterladen und den Link zusätzlich per E-Mail
+        erhalten, und bin damit einverstanden, dass meine Angaben dafür verarbeitet werden.
+        Hinweise dazu in der <a href="#datenschutz">Datenschutzerklärung</a>.</span>
       </label>
 
-      <button type="submit">Checkliste anfordern</button>
-      <p class="klein">Kein Newsletter. Wir schreiben Ihnen nur die Checkliste.</p>
+      <button type="submit">Checkliste herunterladen</button>
+      <p class="klein">Der Download startet direkt nach dem Absenden. Kein Newsletter.</p>
     </form>
   </div>
 </section>
