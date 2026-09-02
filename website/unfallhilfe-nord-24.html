@@ -322,10 +322,28 @@ figure.shot-fig figcaption{font-size:.85rem;color:var(--ink-2);padding-top:8px}
 }
 .badges li em{display:block;font-style:normal;font-weight:600;color:var(--ink-2);font-size:.82rem}
 
-.freebie{display:flex;flex-wrap:wrap;gap:22px 28px;align-items:center;justify-content:space-between;margin-top:24px}
-.freebie-text{flex:1 1 320px;min-width:0}
+.freebie{display:flex;flex-wrap:wrap;gap:26px 32px;align-items:flex-start;justify-content:space-between;margin-top:24px}
+.freebie-text{flex:1 1 300px;min-width:0}
 .freebie-text p{margin:0}
 .freebie-text p+p{margin-top:8px;font-size:.85rem;color:#5A6B73;letter-spacing:.01em}
+.freebie-form{flex:1 1 300px;min-width:0;display:flex;flex-direction:column;gap:12px}
+.freebie-form label{display:block;font-size:.85rem;font-weight:700;color:#3A4A52}
+.freebie-form input[type=email],.freebie-form input[type=text]{
+  width:100%;margin-top:5px;padding:12px 14px;font:inherit;color:var(--ink);
+  background:#fff;border:1px solid var(--rule);border-radius:var(--radius)}
+.freebie-form input:focus{outline:2px solid var(--accent);outline-offset:1px}
+.freebie-form .zustimmung{display:flex;gap:9px;align-items:flex-start;
+  font-size:.8rem;font-weight:400;color:#5A6B73;line-height:1.45}
+.freebie-form .zustimmung input{margin-top:2px;flex:0 0 auto;width:16px;height:16px;accent-color:var(--accent)}
+/* Spezifitaet mit Absicht: die allgemeine Regel button[type=submit] weiter
+   unten faerbt den Knopf des Kontaktformulars zurueckhaltend. Hier soll er
+   der Hauptknopf des Abschnitts sein. */
+.freebie-form button[type=submit]{
+  background:var(--accent);color:var(--accent-ink);font:inherit;font-weight:800;font-size:1.05rem;
+  padding:15px 22px;border:0;border-radius:var(--radius);cursor:pointer;text-align:center}
+.freebie-form button[type=submit]:hover{background:var(--accent-dark);color:#fff}
+.freebie-form .klein{font-size:.78rem;color:#6B7A81;margin:0}
+.freebie-honig{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
 .note{
   background:#FBEFD9;border-left:3px solid var(--accent);color:#5C3703;
   padding:16px 18px;border-radius:var(--radius);font-size:.95rem;max-width:66ch;
@@ -650,12 +668,36 @@ details.legal .todo{color:var(--accent);font-weight:700}
       Zwei Seiten A4 zum Ausdrucken — was Sie an der Unfallstelle der Reihe nach
       abhaken, welche Fotos Sie brauchen, bevor die Autos bewegt werden, und die
       Posten, die niemand von sich aus auszahlt.</p>
-      <p>PDF · 2 Seiten · kostenlos · ohne Anmeldung</p>
+      <p>PDF · 2 Seiten · kostenlos · kommt sofort per E-Mail</p>
     </div>
-    <a class="cta" href="freebie/unfallcheckliste-unfallhilfe-nord-24.pdf" download>
-      Checkliste herunterladen
-      <small>PDF, direkt — keine E-Mail nötig</small>
-    </a>
+
+    <form class="freebie-form" action="https://formsubmit.co/hilfe@unfallhilfenord24.de" method="POST">
+      <input type="hidden" name="_subject" value="Checkliste angefordert (Landingpage)">
+      <input type="hidden" name="_template" value="table">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_next" value="https://thomaskraft-ki.github.io/anna/freebie/danke.html">
+      <input type="hidden" name="_autoresponse" value="Guten Tag,\n\nhier ist Ihre Checkliste „Unverschuldeter Unfall: Was in den ersten 24 Stunden zählt“:\n\nhttps://thomaskraft-ki.github.io/anna/freebie/ce5c8f7cde3d/unfallcheckliste-unfallhilfe-nord-24.pdf\n\nZwei Seiten A4 — am besten ausdrucken und ins Handschuhfach legen.\n\nWenn Sie gerade einen Unfall hatten und Hilfe brauchen: Rufen Sie einfach an, rund um die Uhr unter 0176 20 28 94 30. Die Ersteinschätzung kostet nichts und verpflichtet zu nichts.\n\nViele Grüße\nThomas Kraft\nUnfallhilfe Nord 24 · Robert-Bosch-Straße 1A · 25335 Elmshorn\n0176 20 28 94 30 · hilfe@unfallhilfenord24.de">
+      <div class="freebie-honig" aria-hidden="true">
+        <label>Bitte leer lassen<input type="text" name="_honey" tabindex="-1" autocomplete="off"></label>
+      </div>
+
+      <label>E-Mail-Adresse
+        <input type="email" name="email" required autocomplete="email" placeholder="name@beispiel.de">
+      </label>
+      <label>Name <span style="font-weight:400;color:#6B7A81">(freiwillig)</span>
+        <input type="text" name="name" autocomplete="name" placeholder="Vor- und Nachname">
+      </label>
+
+      <label class="zustimmung">
+        <input type="checkbox" name="einwilligung" value="ja" required>
+        <span>Ich möchte die Checkliste per E-Mail erhalten und bin damit einverstanden,
+        dass meine Angaben dafür verarbeitet werden. Hinweise dazu in der
+        <a href="#datenschutz">Datenschutzerklärung</a>.</span>
+      </label>
+
+      <button type="submit">Checkliste anfordern</button>
+      <p class="klein">Kein Newsletter. Wir schreiben Ihnen nur die Checkliste.</p>
+    </form>
   </div>
 </section>
 
@@ -845,7 +887,7 @@ details.legal .todo{color:var(--accent);font-weight:700}
     <details class="legal" id="datenschutz">
       <summary>Datenschutzerklärung</summary>
       <div>
-        <p><strong>Zu dieser Seite:</strong> Sie lädt keine externen Schriften, keine Karten und keine Analyse-Werkzeuge und setzt keine Cookies. Beim Klick auf den WhatsApp-Button verlassen Sie diese Seite.</p>
+        <p><strong>Zu dieser Seite:</strong> Sie lädt keine externen Schriften, keine Karten und keine Analyse-Werkzeuge und setzt keine Cookies. Beim Klick auf den WhatsApp-Button verlassen Sie diese Seite. Wenn Sie die Checkliste anfordern, werden Ihre Angaben an einen Formulardienst übertragen — siehe Abschnitt „Anforderung der Checkliste“ weiter unten.</p>
         <!-- Übernommen aus dem Bestand (Repository www-unfallhilfenord24-de).
              VOR DEM LIVEGANG PRÜFEN: Der Text nennt Dienste der bestehenden Website.
              Was auf der neuen Seite nicht eingesetzt wird, gehört hier heraus. -->
@@ -882,6 +924,26 @@ E-Mail: hilfe@unfallhilfenord24.de</p>
 <h2>4. Datenerfassung auf dieser Website</h2>
 <h3>Cookies</h3> <p>Unsere Internetseiten verwenden so genannte &bdquo;Cookies&ldquo;. Cookies sind kleine Datenpakete und richten auf Ihrem Endger&auml;t keinen Schaden an. Sie werden entweder vor&uuml;bergehend f&uuml;r die Dauer einer Sitzung (Session-Cookies) oder dauerhaft (permanente Cookies) auf Ihrem Endger&auml;t gespeichert. Session-Cookies werden nach Ende Ihres Besuchs automatisch gel&ouml;scht. Permanente Cookies bleiben auf Ihrem Endger&auml;t gespeichert, bis Sie diese selbst l&ouml;schen oder eine automatische L&ouml;schung durch Ihren Webbrowser erfolgt.</p> <p>Cookies k&ouml;nnen von uns (First-Party-Cookies) oder von Drittunternehmen stammen (sog. Third-Party-Cookies). Third-Party-Cookies erm&ouml;glichen die Einbindung bestimmter Dienstleistungen von Drittunternehmen innerhalb von Webseiten (z.&nbsp;B. Cookies zur Abwicklung von Zahlungsdienstleistungen).</p> <p>Cookies haben verschiedene Funktionen. Zahlreiche Cookies sind technisch notwendig, da bestimmte Webseitenfunktionen ohne diese nicht funktionieren w&uuml;rden (z.&nbsp;B. die Warenkorbfunktion oder die Anzeige von Videos). Andere Cookies k&ouml;nnen zur Auswertung des Nutzerverhaltens oder zu Werbezwecken verwendet werden.</p> <p>Cookies, die zur Durchf&uuml;hrung des elektronischen Kommunikationsvorgangs, zur Bereitstellung bestimmter, von Ihnen erw&uuml;nschter Funktionen (z.&nbsp;B. f&uuml;r die Warenkorbfunktion) oder zur Optimierung der Website (z.&nbsp;B. Cookies zur Messung des Webpublikums) erforderlich sind (notwendige Cookies), werden auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO gespeichert, sofern keine andere Rechtsgrundlage angegeben wird. Der Websitebetreiber hat ein berechtigtes Interesse an der Speicherung von notwendigen Cookies zur technisch fehlerfreien und optimierten Bereitstellung seiner Dienste. Sofern eine Einwilligung zur Speicherung von Cookies und vergleichbaren Wiedererkennungstechnologien abgefragt wurde, erfolgt die Verarbeitung ausschlie&szlig;lich auf Grundlage dieser Einwilligung (Art. 6 Abs. 1 lit. a DSGVO und &sect; 25 Abs. 1 TDDDG); die Einwilligung ist jederzeit widerrufbar.</p> <p>Sie k&ouml;nnen Ihren Browser so einstellen, dass Sie &uuml;ber das Setzen von Cookies informiert werden und Cookies nur im Einzelfall erlauben, die Annahme von Cookies f&uuml;r bestimmte F&auml;lle oder generell ausschlie&szlig;en sowie das automatische L&ouml;schen der Cookies beim Schlie&szlig;en des Browsers aktivieren. Bei der Deaktivierung von Cookies kann die Funktionalit&auml;t dieser Website eingeschr&auml;nkt sein.</p> <p>Sofern weitere Cookies und Dienste auf dieser Website eingesetzt werden, k&ouml;nnen Sie dies dieser Datenschutzerkl&auml;rung entnehmen.</p>
 <h3>Anfrage per E-Mail, Telefon oder Telefax</h3> <p>Wenn Sie uns per E-Mail, Telefon oder Telefax kontaktieren, wird Ihre Anfrage inklusive aller daraus hervorgehenden personenbezogenen Daten (Name, Anfrage) zum Zwecke der Bearbeitung Ihres Anliegens bei uns gespeichert und verarbeitet. Diese Daten geben wir nicht ohne Ihre Einwilligung weiter.</p> <p>Die Verarbeitung dieser Daten erfolgt auf Grundlage von Art. 6 Abs. 1 lit. b DSGVO, sofern Ihre Anfrage mit der Erf&uuml;llung eines Vertrags zusammenh&auml;ngt oder zur Durchf&uuml;hrung vorvertraglicher Ma&szlig;nahmen erforderlich ist. In allen &uuml;brigen F&auml;llen beruht die Verarbeitung auf unserem berechtigten Interesse an der effektiven Bearbeitung der an uns gerichteten Anfragen (Art. 6 Abs. 1 lit. f DSGVO) oder auf Ihrer Einwilligung (Art. 6 Abs. 1 lit. a DSGVO) sofern diese abgefragt wurde; die Einwilligung ist jederzeit widerrufbar.</p> <p>Die von Ihnen an uns per Kontaktanfragen &uuml;bersandten Daten verbleiben bei uns, bis Sie uns zur L&ouml;schung auffordern, Ihre Einwilligung zur Speicherung widerrufen oder der Zweck f&uuml;r die Datenspeicherung entf&auml;llt (z.&nbsp;B. nach abgeschlossener Bearbeitung Ihres Anliegens). Zwingende gesetzliche Bestimmungen &ndash; insbesondere gesetzliche Aufbewahrungsfristen &ndash; bleiben unber&uuml;hrt.</p>
+<h3>Anforderung der Checkliste</h3>
+<p>Auf dieser Seite k&ouml;nnen Sie eine Checkliste als PDF anfordern. Daf&uuml;r erheben wir Ihre
+E-Mail-Adresse; die Angabe eines Namens ist freiwillig. Wir verwenden diese Angaben ausschlie&szlig;lich,
+um Ihnen den Download-Link zuzusenden und um Ihre Anfrage zu beantworten. Rechtsgrundlage ist Ihre
+Einwilligung nach Art. 6 Abs. 1 lit. a DSGVO, die Sie mit dem H&auml;kchen im Formular erteilen. Sie
+k&ouml;nnen diese Einwilligung jederzeit formlos widerrufen &ndash; eine E-Mail an
+hilfe@unfallhilfenord24.de gen&uuml;gt. Die Rechtm&auml;&szlig;igkeit der bis zum Widerruf erfolgten
+Verarbeitung bleibt davon unber&uuml;hrt. Ein Newsletter wird nicht versendet; f&uuml;r werbliche
+Zusendungen w&uuml;rden wir Sie gesondert um Einwilligung bitten.</p>
+<p>Zur technischen Abwicklung des Formulars nutzen wir den Dienst <strong>FormSubmit</strong>
+(FormSubmit, Betreiber mit Sitz in den USA, <a href="https://formsubmit.co/" target="_blank"
+rel="noopener">formsubmit.co</a>). Beim Absenden des Formulars werden die von Ihnen eingegebenen Daten
+sowie Ihre IP-Adresse an FormSubmit &uuml;bermittelt, dort verarbeitet und als E-Mail an uns
+weitergeleitet; zugleich erhalten Sie von dort die automatische Antwort mit dem Download-Link. Damit ist
+eine &Uuml;bermittlung in die USA verbunden. Es kann nicht ausgeschlossen werden, dass US-Beh&ouml;rden
+auf dort verarbeitete Daten zugreifen. Wenn Sie das vermeiden m&ouml;chten, fordern Sie die Checkliste
+bitte stattdessen telefonisch oder per WhatsApp bei uns an &ndash; wir senden sie Ihnen dann direkt zu.</p>
+<p>Wir speichern Ihre Angaben, bis Sie uns zur L&ouml;schung auffordern oder der Zweck entf&auml;llt.
+Zwingende gesetzliche Bestimmungen &ndash; insbesondere Aufbewahrungsfristen &ndash; bleiben
+unber&uuml;hrt.</p>
 <h3>Kommunikation via WhatsApp</h3> <p>F&uuml;r die Kommunikation mit unseren Kunden und sonstigen Dritten nutzen wir unter anderem den Instant-Messaging-Dienst WhatsApp. Anbieter ist die WhatsApp Ireland Limited, Merrion Road, Dublin 4, D04 X2K5, Irland.</p> <p>Die Kommunikation erfolgt &uuml;ber eine Ende-zu-Ende-Verschl&uuml;sselung (Peer-to-Peer), die verhindert, dass WhatsApp oder sonstige Dritte Zugriff auf die Kommunikationsinhalte erlangen k&ouml;nnen. WhatsApp erh&auml;lt jedoch Zugriff auf Metadaten, die im Zuge des Kommunikationsvorgangs entstehen (z.&nbsp;B. Absender, Empf&auml;nger und Zeitpunkt). Wir weisen ferner darauf hin, dass WhatsApp nach eigener Aussage, personenbezogene Daten seiner Nutzer mit seiner in den USA ans&auml;ssigen Konzernmutter Meta teilt. Weitere Details zur Datenverarbeitung finden Sie in der Datenschutzrichtlinie von WhatsApp unter: <a href="https://www.whatsapp.com/legal/#privacy-policy" target="_blank" rel="noopener noreferrer">https://www.whatsapp.com/legal/#privacy-policy</a>.</p> <p>Der Einsatz von WhatsApp erfolgt auf Grundlage unseres berechtigten Interesses an einer m&ouml;glichst schnellen und effektiven Kommunikation mit Kunden, Interessenten und sonstigen Gesch&auml;fts- und Vertragspartnern (Art. 6 Abs. 1 lit. f DSGVO). Sofern eine entsprechende Einwilligung abgefragt wurde, erfolgt die Datenverarbeitung ausschlie&szlig;lich auf Grundlage der Einwilligung; diese ist jederzeit mit Wirkung f&uuml;r die Zukunft widerrufbar.</p> <p>Die zwischen Ihnen und uns auf WhatsApp ausgetauschten Kommunikationsinhalte verbleiben bei uns, bis Sie uns zur L&ouml;schung auffordern, Ihre Einwilligung zur Speicherung widerrufen oder der Zweck f&uuml;r die Datenspeicherung entf&auml;llt (z.&nbsp;B. nach abgeschlossener Bearbeitung Ihrer Anfrage). Zwingende gesetzliche Bestimmungen &ndash; insbesondere Aufbewahrungsfristen &ndash; bleiben unber&uuml;hrt.</p>
 <p>Das Unternehmen verf&uuml;gt &uuml;ber eine Zertifizierung nach dem &bdquo;EU-US Data Privacy Framework&ldquo; (DPF). Der DPF ist ein &Uuml;bereinkommen zwischen der Europ&auml;ischen Union und den USA, der die Einhaltung europ&auml;ischer Datenschutzstandards bei Datenverarbeitungen in den USA gew&auml;hrleisten soll. Jedes nach dem DPF zertifizierte Unternehmen verpflichtet sich, diese Datenschutzstandards einzuhalten. Weitere Informationen hierzu erhalten Sie vom Anbieter unter folgendem Link: <a href="https://www.dataprivacyframework.gov/participant/7735" target="_blank" rel="noopener noreferrer">https://www.dataprivacyframework.gov/participant/7735</a>.</p>
 <p>Wir nutzen WhatsApp in der Variante &bdquo;WhatsApp Business&ldquo;.</p> <p>Die Daten&uuml;bertragung in die USA wird auf die Standardvertragsklauseln der EU-Kommission gest&uuml;tzt. Details finden Sie hier: <a href="https://www.whatsapp.com/legal/business-data-transfer-addendum" target="_blank" rel="noopener noreferrer">https://www.whatsapp.com/legal/business-data-transfer-addendum</a>.</p>
