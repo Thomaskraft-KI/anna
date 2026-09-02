@@ -1,0 +1,15 @@
+# robots.txt für die Landingpage von Unfallhilfe Nord 24
+# Gehört in das Wurzelverzeichnis der Subdomain, NICHT in die HTML-Datei.
+# Also: https://SUBDOMAIN.unfallhilfenord24.de/robots.txt
+
+# WICHTIG — häufiger Fehler:
+# Die Seite trägt im Kopf <meta name="robots" content="noindex">.
+# Damit Google dieses noindex überhaupt sehen kann, muss die Seite
+# gecrawlt werden dürfen. Ein "Disallow: /" würde das Crawlen verbieten,
+# die Seite könnte trotzdem im Index landen — nur ohne Beschreibung.
+# Deshalb hier bewusst KEIN Disallow.
+
+User-agent: *
+Allow: /
+
+Sitemap: https://unfallhilfenord24.de/sitemap.xml
