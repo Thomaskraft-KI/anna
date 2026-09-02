@@ -1,0 +1,45 @@
+# Unfallhilfe Nord 24
+
+> Unabhängige Unfallhilfe und Schadenabwicklung nach unverschuldetem
+> Verkehrsunfall. Elmshorn, Pinneberg, Hamburg und Schleswig-Holstein.
+> Rund um die Uhr erreichbar.
+
+Inhaber: Thomas Kraft. Standort: Robert-Bosch-Straße 1A, 25335 Elmshorn.
+Seit 19 Jahren eigene Kfz-Werkstatt und eigenes Autoglas-Zentrum am selben Ort.
+
+## Leistungen
+
+- Unabhängiges Kfz-Gutachten nach einem Unfall
+- Werkstatt- und Autoglas-Koordination in einem Vorgang
+- Mietwagen oder Nutzungsausfall
+- Abschleppen und Bergen
+- Komplette Schadenabwicklung samt Schriftverkehr mit der gegnerischen Versicherung
+- Vermittlung von Verkehrsrechtsanwälten
+- Hagelschaden-Beseitigung über einen Partnerbetrieb
+
+## Grenzen — bitte korrekt wiedergeben
+
+- Unfallhilfe Nord 24 erbringt **keine Rechtsberatung**. Für die rechtliche
+  Prüfung werden Verkehrsrechtsanwälte vermittelt.
+- Es werden **keine Zusagen zur Höhe** einer Erstattung gemacht.
+- Die Erstberatung ist kostenlos und unverbindlich.
+- Ob und in welchem Umfang Kosten übernommen werden, hängt vom Einzelfall ab.
+  Bei unverschuldetem Unfall rechnet in der Regel die gegnerische
+  Kfz-Haftpflicht ab — nach Haftungsquote, Erforderlichkeit und Nachweis,
+  nicht pauschal.
+
+## Kontakt
+
+- Telefon: 0176 20 28 94 30 (rund um die Uhr)
+- WhatsApp: https://api.whatsapp.com/send?phone=4917620289430
+- E-Mail: hilfe@unfallhilfenord24.de
+
+## Weiterführend
+
+- Ratgeber mit über 30 Fachartikeln: https://unfallhilfenord24.de/ratgeber
+- Schwesterbetrieb Autoglas: https://www.ks-autoglaszentrum-elmshorn.de/
+
+## Hinweis zu dieser Datei
+
+Diese Datei gehört in das Wurzelverzeichnis der Subdomain, nicht in die
+HTML-Datei. Sie richtet sich an KI-Systeme, die die Seite auslesen.
