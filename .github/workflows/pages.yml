@@ -1,0 +1,57 @@
+name: Landingpage veroeffentlichen
+
+# Baut den Inhalt von website/ und stellt ihn ueber GitHub Pages online.
+# Laeuft bei jeder Aenderung an website/ auf main — und von Hand ueber
+# "Actions" -> diesen Workflow -> "Run workflow".
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'website/**'
+      - '.github/workflows/pages.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  bauen:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # enablement: true legt die Pages-Seite an, falls sie noch nicht
+      # eingerichtet ist — spart den Klick unter Settings -> Pages.
+      - uses: actions/configure-pages@v5
+        with:
+          enablement: true
+
+      - name: Veroeffentlichungsordner zusammenstellen
+        run: |
+          mkdir -p _site
+          cp -r website/. _site/
+          # Die Landingpage soll auch direkt unter der Wurzeladresse liegen.
+          cp website/unfallhilfe-nord-24.html _site/index.html
+          # Kein Jekyll-Umbau, die Dateien sollen 1:1 ausgeliefert werden.
+          touch _site/.nojekyll
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  veroeffentlichen:
+    needs: bauen
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
