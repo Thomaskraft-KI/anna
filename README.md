@@ -36,6 +36,17 @@ diesem Repo: Sie sind Teil der Schulung, nicht Teil des laufenden Betriebs.
 | Datei | Was es ist |
 |---|---|
 | `unfallhilfe-nord-24.html` | Konversionsorientierte Landingpage für Unfallhilfe Nord 24, gebaut aus einem Kunden-Briefing. Eine einzige Datei, läuft per Doppelklick, keine externen Abhängigkeiten. |
+| `freebie/unfallcheckliste.html` | Quelldatei der Checkliste. **Hier ändern**, nie die PDF direkt. |
+| `freebie/unfallcheckliste-unfallhilfe-nord-24.pdf` | Die Checkliste als PDF, zwei Seiten A4. Auf der Landingpage im Abschnitt „Zum Mitnehmen" verlinkt. |
+
+Die PDF neu erzeugen nach einer Änderung an der Quelldatei:
+
+```bash
+cd website/freebie
+chromium --headless --no-pdf-header-footer \
+  --print-to-pdf=unfallcheckliste-unfallhilfe-nord-24.pdf \
+  unfallcheckliste.html
+```
 
 ### Wo die Seite online steht
 

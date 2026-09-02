@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<title>Unfall-Checkliste — Unfallhilfe Nord 24</title>
+<style>
+  /* Quelldatei der PDF-Checkliste. Erzeugt mit:
+     chromium --headless --no-pdf-header-footer --print-to-pdf=… unfallcheckliste.html
+     Farben und Schriftstapel entsprechen der Landingpage. */
+  :root{
+    --ink:#0F2B38; --dark:#0F2B38; --ground:#F4F1EC; --surface:#FFFDFA;
+    --rule:#DCD5C9; --accent:#F2A03D; --accent-dark:#8A4E08; --ok:#1F5A3D;
+  }
+  @page{ size:A4; margin:11mm 12mm 9mm; }
+  *{ box-sizing:border-box; }
+  body{
+    margin:0; color:var(--ink); background:#fff;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    font-size:9.7pt; line-height:1.38; -webkit-print-color-adjust:exact; print-color-adjust:exact;
+  }
+  .seite{ page-break-after:always; }
+  .seite:last-child{ page-break-after:auto; }
+
+  header.kopf{
+    background:var(--dark); color:#EFEADF; padding:5mm 6mm 4.5mm; border-radius:2mm;
+    display:flex; justify-content:space-between; align-items:flex-end; gap:6mm;
+  }
+  .kopf .marke{ font-size:8.4pt; letter-spacing:.09em; text-transform:uppercase; opacity:.75; margin:0 0 1.5mm; }
+  .kopf h1{ margin:0; font-size:15.4pt; line-height:1.2; letter-spacing:-.01em; }
+  .kopf .tel{ text-align:right; font-size:8.6pt; line-height:1.5; opacity:.9; white-space:nowrap; }
+  .kopf .tel strong{ display:block; font-size:11pt; color:var(--accent); letter-spacing:.01em; }
+
+  .lead{ margin:3.4mm 0 2.8mm; font-size:9.9pt; color:#3A4A52; }
+  .lead strong{ color:var(--ink); }
+
+  h2.abschnitt{
+    margin:3.6mm 0 2mm; font-size:10.4pt; letter-spacing:-.01em;
+    padding-bottom:1.5mm; border-bottom:1.5pt solid var(--accent);
+  }
+  h2.abschnitt span{ color:var(--accent-dark); font-variant-numeric:tabular-nums; }
+
+  ol.liste, ul.liste{ list-style:none; margin:0; padding:0; }
+  ol.liste > li{
+    display:flex; gap:3.2mm; padding:1.9mm 0; border-bottom:.5pt solid var(--rule);
+    break-inside:avoid;
+  }
+  ol.liste > li:last-child{ border-bottom:none; }
+  .box{
+    flex:0 0 auto; width:4.2mm; height:4.2mm; margin-top:.9mm;
+    border:1pt solid var(--ink); border-radius:.6mm;
+  }
+  .txt{ flex:1 1 auto; }
+  .txt b{ display:block; font-size:10pt; }
+  .txt small{ display:block; color:#55666E; font-size:8.8pt; line-height:1.38; margin-top:.4mm; }
+
+  .merk{
+    margin:2.6mm 0 0; padding:2.8mm 4mm; background:var(--ground);
+    border-left:2.2mm solid var(--accent); border-radius:1mm; break-inside:avoid;
+  }
+  .merk b{ display:block; margin-bottom:1mm; }
+  .merk p{ margin:0; font-size:8.9pt; color:#3A4A52; }
+
+  .foto{ margin:1.8mm 0 0; padding:0; columns:2; column-gap:5mm; font-size:8.7pt; }
+  .foto li{ list-style:none; padding-left:4.5mm; position:relative; margin-bottom:1.2mm; break-inside:avoid; }
+  .foto li::before{ content:""; position:absolute; left:0; top:1.5mm; width:2mm; height:2mm; background:var(--accent); border-radius:50%; }
+
+  .kontakt{
+    margin-top:3.4mm; padding:3.4mm 4.5mm; background:var(--dark); color:#EFEADF;
+    border-radius:2mm; break-inside:avoid;
+  }
+  .kontakt h3{ margin:0 0 1.2mm; font-size:10pt; }
+  .kontakt p{ margin:0; font-size:8.9pt; line-height:1.5; opacity:.92; }
+  .kontakt .gross{ font-size:11.5pt; color:var(--accent); font-weight:600; letter-spacing:.01em; }
+
+  .fuss{
+    margin-top:2.6mm; padding-top:1.8mm; border-top:.5pt solid var(--rule);
+    font-size:7.2pt; color:#6B7A81; line-height:1.42;
+  }
+</style>
+</head>
+<body>
+
+<section class="seite">
+  <header class="kopf">
+    <div>
+      <p class="marke">Unfallhilfe Nord 24 · Elmshorn</p>
+      <h1>Unverschuldeter Unfall:<br>Was in den ersten 24 Stunden zählt</h1>
+    </div>
+    <div class="tel">
+      Rund um die Uhr<strong>0176 20 28 94 30</strong></div>
+  </header>
+
+  <p class="lead">Ein Unfall dauert zehn Sekunden. Was danach kommt, dauert zwei Wochen.
+  Diese Checkliste ist für den Moment gemacht, in dem Sie an der Straße stehen und nicht
+  wissen, was zuerst. <strong>Ausdrucken und ins Handschuhfach.</strong></p>
+
+  <h2 class="abschnitt"><span>Teil 1</span> &nbsp;An der Unfallstelle</h2>
+
+  <ol class="liste">
+    <li><span class="box"></span><span class="txt"><b>Absichern, bevor Sie irgendetwas anderes tun.</b>
+      <small>Warnblinker an, Warnweste anziehen — noch im Auto —, Warndreieck aufstellen. Innerorts rund 50 Meter, außerorts 100, auf der Autobahn 200.</small></span></li>
+
+    <li><span class="box"></span><span class="txt"><b>Verletzte? Sofort 112.</b>
+      <small>Erste Hilfe geht allem vor. Auch scheinbar Unverletzte sollten sich durchchecken lassen — ein Schleudertrauma zeigt sich oft erst Stunden später, und ohne ärztlichen Befund ist es später schwer nachzuweisen.</small></span></li>
+
+    <li><span class="box"></span><span class="txt"><b>Im Zweifel die Polizei rufen: 110.</b>
+      <small>Immer bei Personenschaden, unklarer Schuldfrage, Verdacht auf Alkohol oder Drogen, Fahrerflucht, ausländischem Kennzeichen, Miet- oder Firmenwagen — und immer, wenn der Unfallgegner nicht kooperiert.</small></span></li>
+
+    <li><span class="box"></span><span class="txt"><b>Unterschreiben Sie nichts.</b>
+      <small>Kein Schuldanerkenntnis, keine vorformulierte Erklärung des Gegners, keine Abtretung an ein Abschleppunternehmen, das zufällig vorbeikommt. Sie müssen an der Unfallstelle nichts unterschreiben.</small></span></li>
+
+    <li><span class="box"></span><span class="txt"><b>Fotografieren, bevor die Fahrzeuge bewegt werden.</b>
+      <small>Der Endstand ist der wichtigste Beweis — er lässt sich später nicht rekonstruieren.</small>
+      <ul class="foto">
+        <li>Gesamtsituation aus vier Richtungen</li>
+        <li>Endstand beider Fahrzeuge</li>
+        <li>Beide Kennzeichen lesbar</li>
+        <li>Jeder Schaden aus der Nähe</li>
+        <li>Bremsspuren, Glas, Splitter</li>
+        <li>Ampel, Schilder, Fahrbahnmarkierung</li>
+        <li>Straßenzustand, Licht, Wetter</li>
+        <li>Versicherungsnachweis des Gegners</li>
+      </ul></span></li>
+
+    <li><span class="box"></span><span class="txt"><b>Daten des Unfallgegners vollständig aufnehmen.</b>
+      <small>Name, Anschrift, Telefonnummer, Kennzeichen, Versicherung und Versicherungsschein-Nummer. Ist der Fahrer nicht der Halter: beide notieren. Am schnellsten: Führerschein und Fahrzeugschein abfotografieren.</small></span></li>
+
+    <li><span class="box"></span><span class="txt"><b>Zeugen jetzt ansprechen, nicht später suchen.</b>
+      <small>Name und Telefonnummer. „Der meldet sich schon" ist keine Zeugenaussage. Wer weiterfährt, ist nicht mehr auffindbar.</small></span></li>
+
+    <li><span class="box"></span><span class="txt"><b>Notieren, solange es frisch ist.</b>
+      <small>Ort, Datum, Uhrzeit, Fahrtrichtung, Geschwindigkeit, Wetter, Lichtverhältnisse und in zwei Sätzen der Hergang. Nach drei Tagen erinnern Sie das anders.</small></span></li>
+  </ol>
+
+  <div class="merk">
+    <b>Der häufigste teure Fehler</b>
+    <p>Noch am Unfalltag ruft die Versicherung des Gegners an und sagt: „Wir regeln das für Sie."
+    Das klingt nach Entlastung, ist aber eine Steuerung. Diese Versicherung wird nicht dafür
+    bezahlt, dass Sie zufrieden sind — sondern dafür, dass der Schaden klein bleibt.
+    Sie müssen darauf nicht eingehen.</p>
+  </div>
+</section>
+
+<section class="seite">
+  <header class="kopf">
+    <div>
+      <p class="marke">Unfallhilfe Nord 24 · Elmshorn</p>
+      <h1>Die ersten Tage:<br>wo das Geld verloren geht</h1>
+    </div>
+    <div class="tel">
+      Rund um die Uhr<strong>0176 20 28 94 30</strong></div>
+  </header>
+
+  <h2 class="abschnitt"><span>Teil 2</span> &nbsp;Ihre Rechte und die vergessenen Posten</h2>
+
+  <ol class="liste">
+    <li><span class="box"></span><span class="txt"><b>Sie wählen den Sachverständigen — nicht die Gegenseite.</b>
+      <small>Der Prüfer im Auftrag der gegnerischen Versicherung schaut auf denselben Schaden, aber mit einem anderen Auftrag. Ein unabhängiger Gutachter dokumentiert neutral und hält auch Positionen fest, die sonst untergehen.</small></span></li>
+
+    <li><span class="box"></span><span class="txt"><b>Sie wählen die Werkstatt — auch gegen den Vorschlag der Gegenseite.</b>
+      <small>Nach einem unverschuldeten Unfall dürfen Sie frei wählen. Ob die Versicherung auf eine günstigere Werkstatt verweisen darf, hängt vom Einzelfall ab.</small></span></li>
+
+    <li><span class="box"></span><span class="txt"><b>Fragen Sie nach den Posten, die niemand von selbst auszahlt.</b>
+      <small>Wertminderung (der dauerhafte Wertverlust Ihres Autos durch den Unfall), Nutzungsausfall oder Mietwagen, Gutachterkosten, Anwaltskosten, Abschleppen, Auslagenpauschale. Jede dieser Positionen muss begründet und nachgewiesen werden. Wer sie nicht kennt, fragt nicht danach — und bekommt sie nicht.</small></span></li>
+
+    <li><span class="box"></span><span class="txt"><b>Riss in der Scheibe? Sofort mit einplanen.</b>
+      <small>Ein Steinschlag im Sichtfeld des Fahrers bedeutet: keine Plakette bei der Hauptuntersuchung. Scheibe und Karosserieschaden gehören in einen Vorgang, nicht in zwei Termine an zwei Orten.</small></span></li>
+
+    <li><span class="box"></span><span class="txt"><b>Alles über eine Stelle laufen lassen.</b>
+      <small>Gutachter, Karosserie, Scheibe, Mietwagen, Abrechnung, Rückfragen — das sind fünf Stellen, die nichts voneinander wissen. Jede erwartet, dass Sie den Überblick behalten. Genau den haben Sie nach einem Unfall nicht.</small></span></li>
+
+    <li><span class="box"></span><span class="txt"><b>Beweise sichern und aufheben.</b>
+      <small>Fotos nicht löschen, Belege sammeln: Abschleppen, Mietwagen, Fahrten zum Arzt, Zuzahlungen. Alles, was Sie nicht belegen können, wird auch nicht erstattet.</small></span></li>
+
+    <li><span class="box"></span><span class="txt"><b>Rechtliche Prüfung: dafür gibt es Verkehrsrechtsanwälte.</b>
+      <small>Bei einem unverschuldeten Unfall gehören die Anwaltskosten in der Regel zu den Positionen, die gegenüber der gegnerischen Haftpflicht geltend gemacht werden. Ob und in welchem Umfang, hängt vom Einzelfall ab.</small></span></li>
+  </ol>
+
+  <div class="merk">
+    <b>Was wir Ihnen nicht versprechen</b>
+    <p>Niemand kann seriös vorhersagen, was eine Versicherung am Ende erstattet — wer Ihnen das
+    zusagt, verspricht zu viel. Bei einem unverschuldeten Unfall rechnet in der Regel die
+    gegnerische Kfz-Haftpflicht ab, aber nach Haftungsquote, Erforderlichkeit und Nachweis,
+    nicht pauschal in voller Höhe.</p>
+  </div>
+
+  <div class="kontakt">
+    <h3>Sie müssen das nicht allein sortieren.</h3>
+    <p>Erzählen Sie uns kurz, was passiert ist. Die Ersteinschätzung kostet nichts und
+    verpflichtet zu nichts. Wir übernehmen Gutachten, Werkstatt, Autoglas, Mietwagen,
+    Abschleppen und den Schriftverkehr mit der gegnerischen Versicherung.</p>
+    <p style="margin-top:2.5mm"><span class="gross">0176 20 28 94 30</span>
+    &nbsp;· &nbsp;hilfe@unfallhilfenord24.de<br>
+    Unfallhilfe Nord 24 · Inhaber Thomas Kraft · Robert-Bosch-Straße 1A · 25335 Elmshorn<br>
+    Elmshorn · Pinneberg · Hamburg · Schleswig-Holstein — rund um die Uhr, 7 Tage die Woche.</p>
+  </div>
+
+  <p class="fuss">Diese Checkliste gibt praktische Hinweise nach einem Verkehrsunfall und ersetzt
+  keine Rechtsberatung im Einzelfall. Unfallhilfe Nord 24 erbringt keine Rechtsberatung; für die
+  rechtliche Prüfung vermitteln wir auf Wunsch Verkehrsrechtsanwälte. Angaben ohne Gewähr.</p>
+</section>
+
+</body>
+</html>
