@@ -36,7 +36,6 @@ diesem Repo: Sie sind Teil der Schulung, nicht Teil des laufenden Betriebs.
 | Datei | Was es ist |
 |---|---|
 | `unfallhilfe-nord-24.html` | Konversionsorientierte Landingpage für Unfallhilfe Nord 24, gebaut aus einem Kunden-Briefing. Eine einzige Datei, läuft per Doppelklick, keine externen Abhängigkeiten. |
-| `freebie/danke.html` | Seite nach dem Absenden des Formulars. |
 | `freebie/ce5c8f7cde3d/…pdf` | Die Checkliste. Liegt bewusst unter einem nicht erratbaren Pfad und ist **nirgends verlinkt** — den Link bekommt nur, wer das Formular ausfüllt. |
 
 Die Quelldatei der Checkliste liegt **außerhalb** von `website/`, unter
@@ -53,21 +52,29 @@ chromium --headless --no-pdf-header-footer \
 ### Leads: wie der Download abläuft
 
 Das Formular im Abschnitt „Zum Mitnehmen" schickt an
-[FormSubmit](https://formsubmit.co/) (`hilfe@unfallhilfenord24.de`). FormSubmit
-mailt die Anfrage an uns und schickt dem Interessenten automatisch den
-Download-Link.
+[FormSubmit](https://formsubmit.co/) (`hilfe@unfallhilfenord24.de`). Danach:
 
-**Einmalig nötig:** Beim ersten Absenden schickt FormSubmit eine
-Aktivierungsmail an `hilfe@unfallhilfenord24.de`. Erst nach dem Klick darauf
-funktioniert das Formular. Also einmal selbst ausfüllen und bestätigen.
+1. FormSubmit mailt die Anfrage an uns — das ist der Lead.
+2. Der Besucher wird direkt auf die PDF weitergeleitet, der Download startet
+   sofort. Keine Zwischenseite, kein Warten auf eine E-Mail.
+3. Zusätzlich geht per Autoresponder eine Mail mit dem Link an den Besucher,
+   damit er ihn später wiederfindet.
+
+**Einmalig nötig, sonst passiert gar nichts:** Beim ersten Absenden schickt
+FormSubmit eine Aktivierungsmail an `hilfe@unfallhilfenord24.de`. Bis der Link
+darin geklickt ist, verschickt FormSubmit **keine einzige Mail** — auch die
+Lead-Benachrichtigungen nicht. Absender ist `noreply@formsubmit.co`, landet
+gern im Spam.
 
 Grenzen, die man kennen sollte:
 
-- Der Schutz ist **weich**. Die PDF liegt unter einer öffentlichen Adresse, nur
-  unter einem schwer zu erratenden Pfad. Wer den Link weitergibt, gibt die
-  Datei weiter. Und da dieses Repo öffentlich ist, ist die Datei ohnehin über
-  GitHub auffindbar. Gegen Google und beiläufiges Teilen hilft es, gegen
-  jemanden der sucht nicht.
+- Der Schutz ist **weich**, und seit der Direktweiterleitung noch weicher: die
+  PDF-Adresse steht nach dem Absenden in der Adresszeile des Browsers und lässt
+  sich weitergeben. Da dieses Repo öffentlich ist, ist die Datei ohnehin über
+  GitHub auffindbar. Das Formular ist eine Hürde, kein Schloss.
+- Die E-Mail-Adresse wird **nicht geprüft**. Wer eine erfundene Adresse
+  einträgt, bekommt die PDF trotzdem. Wer verifizierte Adressen braucht, muss
+  den Download an die Mail koppeln — dann aber mit dem Warten leben.
 - FormSubmit sitzt in den USA. Die Datenschutzerklärung der Seite hat dafür
   einen eigenen Abschnitt bekommen — **den bitte prüfen lassen**, bevor das
   unter eigener Domain läuft. Für Dauerbetrieb ist ein EU-Dienst mit
@@ -75,23 +82,6 @@ Grenzen, die man kennen sollte:
 - Die Einwilligung deckt **nur** den Versand der Checkliste. Für Werbung an
   diese Adressen braucht es eine gesonderte Einwilligung, in der Praxis mit
   Double-Opt-In.
-
-### Wo die Seite online steht
-
-**https://thomaskraft-ki.github.io/anna/**
-
-Ausgeliefert wird der Branch `gh-pages`. Der Workflow
-`.github/workflows/pages.yml` schreibt den Inhalt von `website/` bei jeder
-Änderung auf `main` dorthin — also nichts von Hand nach `gh-pages` kopieren,
-immer `website/` ändern.
-
-Die Landingpage steht bewusst auf `noindex` (Zeile 14 im HTML), damit sie
-`unfallhilfenord24.de` keine Rankings wegnimmt. Sie ist erreichbar und
-teilbar, taucht aber nicht bei Google auf.
-
-Die Adresse oben ist eine Übungs- und Vorschauadresse. Wenn die Seite unter
-der eigenen Domain laufen soll, gehört sie in das Repo der jeweiligen Marke
-(`www-unfallhilfenord24-de`) — dort mit Domain, Canonical und ohne `noindex`.
 
 ## Nach der Schulung
 
