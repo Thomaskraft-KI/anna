@@ -27,11 +27,11 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      # enablement: true legt die Pages-Seite an, falls sie noch nicht
-      # eingerichtet ist — spart den Klick unter Settings -> Pages.
+      # Setzt voraus, dass Pages im Repo einmalig aktiviert wurde:
+      # Settings -> Pages -> Source: "GitHub Actions".
+      # Das Anlegen der Pages-Seite kann der Workflow nicht selbst erledigen,
+      # dafuer fehlen dem GITHUB_TOKEN die Admin-Rechte.
       - uses: actions/configure-pages@v5
-        with:
-          enablement: true
 
       - name: Veroeffentlichungsordner zusammenstellen
         run: |
